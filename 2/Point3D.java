@@ -1,4 +1,4 @@
-class Point3D {
+public class Point3D {
 
     Coordinate _x;
     Coordinate _y;
