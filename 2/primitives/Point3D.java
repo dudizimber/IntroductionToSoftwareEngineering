@@ -1,21 +1,23 @@
+package primitives;
+
 public class Point3D {
 
     Coordinate _x;
     Coordinate _y;
     Coordinate _z;
 
-    final Point3D ZERO = new Point3D(0, 0, 0);
+    //final Point3D ZERO = new Point3D(0, 0, 0);
 
-    Point3D(final double x, final double y, final double z) {
+    public Point3D(double x, double y, double z) {
         _x = new Coordinate(x);
         _y = new Coordinate(y);
         _z = new Coordinate(z);
     }
 
-    Point3D(final Coordinate x, final Coordinate y, final Coordinate z) {
-        _x = x.get();
-        _y = y.get();
-        _z = z.get();
+    Point3D(Coordinate x, Coordinate y, Coordinate z) {
+        _x = new Coordinate(x.get());
+        _y = new Coordinate(y.get());
+        _z = new Coordinate(z.get());
     }
 
     Point3D(final Point3D point) {
@@ -29,7 +31,7 @@ public class Point3D {
     }
 
     public Coordinate getY() {
-        return _Y;
+        return _y;
     }
 
     public Coordinate getZ() {
@@ -37,17 +39,17 @@ public class Point3D {
     }
 
     public Vector subtract(Point3D other) {
-        // TODO
+        return new Vector(other.getX().get() - _x.get(), other.getY().get() - _y.get(), other.getZ().get() - _z.get());
     }
 
     public Point3D add(Vector other) {
-        // TODO
+        return new Point3D(_x.get() + other.getPoint().getX().get(), _y.get() + other.getPoint().getY().get(), _z.get() + other.getPoint().getZ().get());
     }
 
     public double distanceSquared(Point3D other) {
-        double newX = _x - other.getX();
-        double newY = _y - other.getY();
-        double newZ = _z - other.getZ();
+        double newX = _x.get() - other.getX().get();
+        double newY = _y.get() - other.getY().get();
+        double newZ = _z.get() - other.getZ().get();
         return (newX * newX) + (newY * newY) + (newZ * newZ);
     }
 
