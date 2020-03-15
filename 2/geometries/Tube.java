@@ -7,7 +7,11 @@ import primitives.Vector;
 class Tube extends RadialGeometry {
 
     Ray _axisRay;
-
+/**
+ * Constructor with axisRay and radius
+ * @param axisRay
+ * @param radius
+ */
     Tube(Ray axisRay, double radius) {
         super(radius);
         _axisRay = axisRay;
@@ -16,7 +20,10 @@ class Tube extends RadialGeometry {
     public Ray geAxisRay() {
         return _axisRay;
     }
-
+/**
+ * @param other - The other point
+ * Returns the normal
+ */
     Vector getNormal(Point3D other) {
         return null;
     }

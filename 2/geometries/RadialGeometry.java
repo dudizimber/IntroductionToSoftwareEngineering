@@ -1,8 +1,13 @@
 package geometries;
-
+/**
+ * Radial Geometry class
+ */
 abstract class RadialGeometry {
     double _radius;
-
+/**
+ * Constructor with radius
+ * @param radius
+ */
     RadialGeometry(double radius) {
         _radius = radius;
     }

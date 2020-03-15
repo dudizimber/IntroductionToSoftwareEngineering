@@ -2,10 +2,14 @@ package geometries;
 
 import primitives.Point3D;
 import primitives.Vector;
-
+/**
+ * Class that represents a sphere
+ */
 class Sphere extends RadialGeometry {
     Point3D _center;
-
+/**
+ * Constructor based on center point and radius
+ */
     Sphere(Point3D center, double radius) {
         super(radius);
         _center = center;
@@ -14,7 +18,11 @@ class Sphere extends RadialGeometry {
     public Point3D getCenter() {
         return _center;
     }
-
+/**
+ * 
+ * @param point
+ * @return normal
+ */
     Vector getNormal(Point3D point) {
         return null;
     }
