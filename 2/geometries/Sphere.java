@@ -18,4 +18,8 @@ class Sphere extends RadialGeometry {
     Vector getNormal(Point3D point) {
         return null;
     }
+    @Override
+    public String toString() {
+        return super.toString()+" "+this._center.toString();
+    }
 }

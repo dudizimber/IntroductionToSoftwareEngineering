@@ -19,4 +19,8 @@ public class Cylinder extends Tube {
     Vector getNormal(Point3D other) {
         return null;
     }
+    @Override
+    public String toString() {
+        return super.toString()+" Height: "+this._height;
+    }
 }

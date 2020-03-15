@@ -56,4 +56,8 @@ public class Point3D {
     public double distance(Point3D other) {
         return Math.sqrt(distanceSquared(other));
     }
+    @Override
+    public String toString() {
+        return "x=" +this._x.toString()+" y= "+this._y.toString()+" z= "+this._z.toString();
+    }
 }

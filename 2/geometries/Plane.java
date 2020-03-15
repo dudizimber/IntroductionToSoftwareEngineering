@@ -22,4 +22,8 @@ public class Plane {
     public Vector getNormal() {
         return _normal;
     }
+    @Override
+    public String toString() {
+        return "Point : "+this._point.toString()+" Vector: "+this._normal.toString();
+    }
 }

@@ -14,4 +14,8 @@ abstract class RadialGeometry {
     public double getRadius() {
         return _radius;
     }
+    @Override
+    public String toString() {
+        return Double.toString(this._radius);
+    }
 }

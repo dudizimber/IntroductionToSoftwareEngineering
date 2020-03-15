@@ -71,5 +71,9 @@ public class Vector {
         Vector vec = new Vector(this);
         return vec.normalize();
     }
+    @Override
+    public String toString() {
+        return this._point.toString();
+    }
 
 }

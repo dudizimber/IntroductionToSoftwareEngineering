@@ -20,5 +20,8 @@ class Tube extends RadialGeometry {
     Vector getNormal(Point3D other) {
         return null;
     }
-
+   @Override
+   public String toString() {
+       return super.toString() +" Ray: "+ this._axisRay.toString();
+   }
 }
