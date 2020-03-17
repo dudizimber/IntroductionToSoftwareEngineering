@@ -3,9 +3,20 @@ import static java.lang.System.out;
 import static primitives.Util.*;
 
 /**
+ * 
+ * @author David Zimberknopf
+ * @studentNumber	000165078
+ * 
+ * @author Saniel Grunberger
+ * @studentNumber	000522883
+ *
+ */
+
+/**
  * Test program for the 1st stage
  *
  * @author Dan Zilberstein
+ * 
  */
 public final class Main {
 
