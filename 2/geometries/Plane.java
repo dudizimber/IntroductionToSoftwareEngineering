@@ -2,27 +2,34 @@ package geometries;
 
 import primitives.Point3D;
 import primitives.Vector;
+
 /**
- * This class represents a plane (point , normal)
+ * This class represents a 3D Plane
  */
 public class Plane {
     Point3D _point;
     Vector _normal;
-/**
- * The point and normal that represent the plane
- * @param point
- * @param normal
- */
+
+    /****** CONTRUCTORS *******/
+
+    /**
+     * Constructor based on a point and the normal
+     * 
+     * @param point
+     * @param normal
+     */
     Plane(Point3D point, Vector normal) {
         _point = point;
         _normal = normal;
     }
-/**
- * The three vectors that represent the plane
- * @param one
- * @param two
- * @param three
- */
+
+    /**
+     * Constructor based on three 3D points
+     * 
+     * @param one
+     * @param two
+     * @param three
+     */
     Plane(Point3D one, Point3D two, Point3D three) {
         _point = one;
 
@@ -30,11 +37,37 @@ public class Plane {
 
     }
 
+    /****** GETTERS *******/
+
+    /**
+     * @return the _point
+     */
+    public Point3D getPoint() {
+        return _point;
+    }
+
+    /****** FUNCTIONS *******/
+
+    /**
+     * @return normal
+     */
     public Vector getNormal() {
         return _normal;
     }
+
     @Override
     public String toString() {
-        return "Point : "+this._point.toString()+" Vector: "+this._normal.toString();
+        return "Plane:\n - " + this._point.toString() + "\n - " + this._normal.toString();
     }
+
+    // @Override
+    // public boolean equals(Object obj) {
+    //     if (this == obj)
+    //         return true;
+    //     if (obj == null || !(obj instanceof Plane))
+    //         return false;
+    //     Plane plane = (Plane) obj;
+    //     return _normal == plane.getNormal() && _point == plane.getPoint();
+    // }
+
 }
