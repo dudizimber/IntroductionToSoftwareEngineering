@@ -6,7 +6,7 @@ import primitives.Vector;
 /**
  * Class that represents a 3D Sphere
  */
-class Sphere extends RadialGeometry {
+public class Sphere extends RadialGeometry {
     Point3D _center;
 
     /****** CONSTRUCTORS *******/
