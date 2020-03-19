@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import primitives.Vector;
 
+import static java.lang.System.out;
 import static org.junit.Assert.*;
 import static primitives.Util.isZero;
 
@@ -15,26 +16,36 @@ import static primitives.Util.isZero;
 * @since <pre>mar 19, 2020</pre> 
 * @version 1.0 
 */ 
-public class VectorTest { 
+public class VectorTest {
 
-/** 
-* 
-* Method: getPoint() 
-* 
-*/ 
-@Test
-public void testGetPoint() throws Exception { 
-//TODO: Test goes here... 
-} 
+    Vector v1 = new Vector(1, 2, 3);
+    Vector v2 = new Vector(-2, -4, -6);
+    Vector v3 = new Vector(0, 3, -2);
 
-/** 
+    /**
+     *
+     * Method: vectorZero()
+     *
+     */
+    @Test
+    public void testVectorZero() throws Exception {
+        try {
+            new Vector(0, 0, 0);
+            fail("ERROR: zero vector does not throw an exception");
+        } catch (Exception e) {
+        }
+    }
+
+
+    /**
 * 
 * Method: add(Vector other) 
 * 
 */ 
 @Test
-public void testAdd() throws Exception { 
-//TODO: Test goes here... 
+public void testAdd() throws Exception {
+    Vector v = new Vector(-1, -2, -3);
+    assertTrue("ERROR: add() does not return the correct value", v1.add(v2).equals(v));
 } 
 
 /** 
@@ -63,8 +74,9 @@ public void testScale() throws Exception {
 * 
 */ 
 @Test
-public void testDotProduct() throws Exception { 
-//TODO: Test goes here... 
+public void testDotProduct() throws Exception {
+    assertTrue("ERROR: dotProduct() for orthogonal vectors is not zero", isZero(v1.dotProduct(v3)));
+    assertTrue("ERROR: dotProduct() wrong value", isZero(v1.dotProduct(v2) + 28));
 } 
 
 /** 
@@ -74,11 +86,7 @@ public void testDotProduct() throws Exception {
 */ 
 @Test
 public void testCrossProduct() throws Exception {
-    Vector v1 = new Vector(1, 2, 3);
-    Vector v2 = new Vector(-2, -4, -6);
-
     // ============ Equivalence Partitions Tests ==============
-    Vector v3 = new Vector(0, 3, -2);
     Vector vr = v1.crossProduct(v3);
 
     // Test that length of cross-product is proper (orthogonal vectors taken for simplicity)
@@ -103,8 +111,8 @@ public void testCrossProduct() throws Exception {
 * 
 */ 
 @Test
-public void testLengthSquared() throws Exception { 
-//TODO: Test goes here... 
+public void testLengthSquared() throws Exception {
+    assertTrue("ERROR: lengthSquared() wrong value", isZero(v1.lengthSquared() - 14));
 } 
 
 /** 
@@ -113,8 +121,8 @@ public void testLengthSquared() throws Exception {
 * 
 */ 
 @Test
-public void testLength() throws Exception { 
-//TODO: Test goes here... 
+public void testLength() throws Exception {
+    assertTrue("ERROR: length() wrong value", isZero(new Vector(0, 3, 4).length() - 5));
 } 
 
 /** 
@@ -123,8 +131,11 @@ public void testLength() throws Exception {
 * 
 */ 
 @Test
-public void testNormalize() throws Exception { 
-//TODO: Test goes here... 
+public void testNormalize() throws Exception {
+    Vector vCopy = new Vector(v1);
+    Vector vCopyNormalize = vCopy.normalize();
+    assertFalse("ERROR: normalize() function creates a new vector", vCopy != vCopyNormalize);
+    assertTrue("ERROR: normalize() result is not a unit vector", isZero(vCopyNormalize.length() - 1));
 } 
 
 /** 
@@ -133,29 +144,9 @@ public void testNormalize() throws Exception {
 * 
 */ 
 @Test
-public void testNormalized() throws Exception { 
-//TODO: Test goes here... 
-} 
-
-/** 
-* 
-* Method: toString() 
-* 
-*/ 
-@Test
-public void testToString() throws Exception { 
-//TODO: Test goes here... 
-} 
-
-/** 
-* 
-* Method: equals(Object obj) 
-* 
-*/ 
-@Test
-public void testEquals() throws Exception { 
-//TODO: Test goes here... 
-} 
-
+public void testNormalized() throws Exception {
+    Vector u = v1.normalized();
+    assertFalse("ERROR: normalizated() function does not create a new vector", u == v1);
+}
 
 } 

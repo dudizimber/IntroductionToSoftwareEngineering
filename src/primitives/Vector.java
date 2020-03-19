@@ -192,8 +192,8 @@ public class Vector {
         if (obj == null || !(obj instanceof Vector))
             return false;
         Vector vector = (Vector) obj;
-        return _point.getX() == vector.getPoint().getX() && _point.getY() == vector.getPoint().getY()
-                && _point.getZ() == vector.getPoint().getZ();
+        return _point.getX().get() == vector.getPoint().getX().get() && _point.getY().get() == vector.getPoint().getY().get()
+                && _point.getZ().get() == vector.getPoint().getZ().get();
     }
 
 }
