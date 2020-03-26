@@ -1,8 +1,15 @@
 package test.geometries; 
 
-import org.junit.Test; 
+import geometries.Tube;
+import org.junit.Test;
 import org.junit.Before; 
-import org.junit.After; 
+import org.junit.After;
+import static org.junit.Assert.*;
+import primitives.Point3D;
+import primitives.Ray;
+import primitives.Vector;
+
+import java.awt.*;
 
 /** 
 * Tube Tester. 
@@ -13,42 +20,21 @@ import org.junit.After;
 */ 
 public class TubeTest { 
 
-@Before
-public void before() throws Exception { 
-} 
-
-@After
-public void after() throws Exception { 
-} 
-
-/** 
-* 
-* Method: geAxisRay() 
-* 
-*/ 
-@Test
-public void testGeAxisRay() throws Exception { 
-//TODO: Test goes here... 
-} 
-
 /** 
 * 
 * Method: getNormal(Point3D other) 
 * 
 */ 
 @Test
-public void testGetNormal() throws Exception { 
-//TODO: Test goes here... 
-} 
+public void testGetNormal() throws Exception {
+    Ray ray = new Ray(new Point3D(0,0,0), new Vector(1,0,0));
+    Tube tube = new geometries.Tube(ray, 1);
 
-/** 
-* 
-* Method: toString() 
-* 
-*/ 
-@Test
-public void testToString() throws Exception { 
-//TODO: Test goes here... 
+    Point3D point = new Point3D(1, 1, 0);
+
+    Vector tNormal = tube.getNormal(point);
+
+    assertTrue("Error: Tube getNormal not returning correct value", tNormal.equals(new Vector(0,1,0)));
 } 
 
 

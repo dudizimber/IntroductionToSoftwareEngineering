@@ -1,6 +1,7 @@
 package geometries;
 
 import primitives.Point3D;
+import primitives.Vector;
 
 /**
  * Triangle class. Is a polygon with 3 points only
@@ -12,7 +13,7 @@ public class Triangle extends Polygon {
     /**
      * Constructor based on the three points.
      */
-    Triangle(Point3D one, Point3D two, Point3D three) {
+    public Triangle(Point3D one, Point3D two, Point3D three) {
         super(new Point3D[] { one, two, three });
     }
 
@@ -21,6 +22,11 @@ public class Triangle extends Polygon {
     @Override
     public String toString() {
         return "Triangle:\n - " + super.toString();
+    }
+
+    @Override
+    public Vector getNormal(Point3D point) {
+        return super.getNormal(point);
     }
 
     // @Override

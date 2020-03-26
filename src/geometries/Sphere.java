@@ -14,7 +14,7 @@ public class Sphere extends RadialGeometry {
     /**
      * Constructor based on center point and radius
      */
-    Sphere(Point3D center, double radius) {
+    public Sphere(Point3D center, double radius) {
         super(radius);
         _center = center;
     }
@@ -32,8 +32,8 @@ public class Sphere extends RadialGeometry {
      * @param point
      * @return normal
      */
-    Vector getNormal(Point3D point) {
-        return null;
+    public Vector getNormal(Point3D point) {
+        return _center.subtract(point).normalize();
     }
 
     @Override

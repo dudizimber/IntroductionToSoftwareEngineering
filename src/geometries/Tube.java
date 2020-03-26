@@ -8,7 +8,7 @@ import primitives.Vector;
  * Class that represents a 3D Tube
  */
 
-class Tube extends RadialGeometry {
+public class Tube extends RadialGeometry {
 
     Ray _axisRay;
 
@@ -19,9 +19,10 @@ class Tube extends RadialGeometry {
      * @param axisRay
      * @param radius
      */
-    Tube(Ray axisRay, double radius) {
+    public Tube(Ray axisRay, double radius) {
         super(radius);
         _axisRay = axisRay;
+
     }
 
     /****** GETTERS *******/
@@ -36,23 +37,19 @@ class Tube extends RadialGeometry {
      * @param other - The other point
      * @return normal
      */
-    Vector getNormal(Point3D other) {
-        return null;
+    public Vector getNormal(Point3D other) {
+        double height = 0;
+        double PPo = other.distance(_axisRay.getPoint());
+        Vector v = _axisRay.getVector();
+        height = Math.sqrt(Math.pow(PPo, 2) - Math.pow(_radius, 2));
+        Point3D center = _axisRay.getPoint().add(v.scale(height));
+
+        return center.subtract(other).normalize();
     }
 
     @Override
     public String toString() {
         return "Tube:\n" + " - " + this._axisRay.toString() + "\n - " + super.toString();
     }
-
-    // @Override
-    // public boolean equals(Object obj) {
-    //     if (this == obj)
-    //         return true;
-    //     if (obj == null || !(obj instanceof Tube))
-    //         return false;
-    //     Tube tube = (Tube) obj;
-    //     return _axisRay == tube.geAxisRay() && _radius == tube.getRadius();
-    // }
 
 }

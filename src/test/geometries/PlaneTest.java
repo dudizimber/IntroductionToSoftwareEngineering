@@ -1,8 +1,12 @@
 package test.geometries; 
 
-import org.junit.Test; 
-import org.junit.Before; 
-import org.junit.After; 
+import geometries.Plane;
+import org.junit.Test;
+import org.junit.Before;
+import org.junit.After;
+import static org.junit.Assert.*;
+import primitives.Point3D;
+import primitives.Vector;
 
 /** 
 * Plane Tester. 
@@ -13,23 +17,6 @@ import org.junit.After;
 */ 
 public class PlaneTest { 
 
-@Before
-public void before() throws Exception { 
-} 
-
-@After
-public void after() throws Exception { 
-} 
-
-/** 
-* 
-* Method: getPoint() 
-* 
-*/ 
-@Test
-public void testGetPoint() throws Exception { 
-//TODO: Test goes here... 
-} 
 
 /** 
 * 
@@ -37,19 +24,16 @@ public void testGetPoint() throws Exception {
 * 
 */ 
 @Test
-public void testGetNormal() throws Exception { 
-//TODO: Test goes here... 
-} 
+public void testGetNormal() throws Exception {
+    Point3D a = new Point3D(1, 1, 1);
+    Point3D b = new Point3D(-2,-3,-4);
+    Point3D c = new Point3D(5,7,8);
 
-/** 
-* 
-* Method: toString() 
-* 
-*/ 
-@Test
-public void testToString() throws Exception { 
-//TODO: Test goes here... 
-} 
+    Plane plane = new Plane(a, b, c);
 
+    Vector normal = new Vector(2.0/3, 1.0/3, -2.0/3);
+
+    assertTrue("Error: Plane getNormal not returning correct value", normal.equals(plane.getNormal()));
+} 
 
 } 

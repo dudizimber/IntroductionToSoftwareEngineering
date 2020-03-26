@@ -30,10 +30,12 @@ public class Plane {
      * @param two
      * @param three
      */
-    Plane(Point3D one, Point3D two, Point3D three) {
+    public Plane(Point3D one, Point3D two, Point3D three) {
         _point = one;
 
-        _normal = null;
+        Vector a = two.subtract(one);
+        Vector b = three.subtract(one);
+        _normal = a.crossProduct(b).normalize();
 
     }
 
