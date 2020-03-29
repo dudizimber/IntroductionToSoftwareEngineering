@@ -12,9 +12,9 @@ public class Vector {
      * Constructor based on three numbers that we turn into coordinates Throws
      * Exception if all params are zero
      * 
-     * @param x
-     * @param y
-     * @param z
+     * @param x -double
+     * @param y - double
+     * @param z - double 
      * 
      */
     public Vector(final double x, final double y, final double z) {
@@ -27,9 +27,9 @@ public class Vector {
      * Constructor based on three coordinates Throws Exception if all params are
      * zero.
      * 
-     * @param x
-     * @param y
-     * @param z
+     * @param x - Coordinate
+     * @param y - Coordinate
+     * @param z - Coordinate
      * 
      */
     Vector(final Coordinate x, final Coordinate y, final Coordinate z) {
@@ -41,7 +41,7 @@ public class Vector {
     /**
      * Construcotr based on 3d point Throws Exception if all params are zero.
      * 
-     * @param point
+     * @param point - Point3D
      * 
      */
     Vector(final Point3D point) {
@@ -53,7 +53,7 @@ public class Vector {
     /**
      * Constructor based on vector
      * 
-     * @param vector
+     * @param vector - Vector
      * 
      */
     public Vector(final Vector vector) {
@@ -71,7 +71,7 @@ public class Vector {
     /**
      * Sum of two vectors
      * 
-     * @param other
+     * @param other - Vector
      * @return new Vector [other + this]
      */
     public Vector add(Vector other) {
@@ -83,7 +83,7 @@ public class Vector {
     /**
      * Substract one vector (other) from the other (this)
      * 
-     * @param other
+     * @param other - Vector
      * @return new Vector [this - other]
      */
     public Vector subtract(Vector other) {
@@ -95,7 +95,7 @@ public class Vector {
     /**
      * Multiplies the vector by constant
      * 
-     * @param constant
+     * @param constant - double
      * @return new Vector [constant * this]
      */
     public Vector scale(double constant) {
@@ -104,16 +104,17 @@ public class Vector {
     }
 
     /**
-     * Dot product of two vectors The mathematical formula is the sum of the
-     * multiplied components: Vector A = a1*x + b1*y + c1*z Vector B = a2*x + b2*y +
-     * c2*z
+     * Dot product of two vectors 
      * 
-     * A (.) B = a1*a2 + b1*b2 + c1*c2
-     * 
-     * @param other
+     * @param other - Vector
      * @return double - dot product of the vectors [this (.) other]
      */
     public double dotProduct(Vector other) {
+        /**The mathematical formula is the sum of the
+     * multiplied components: Vector A = a1*x + b1*y + c1*z Vector B = a2*x + b2*y +
+     * c2*z
+     * 
+     * A (.) B = a1*a2 + b1*b2 + c1*c2 */
         return _point.getX().get() * other.getPoint().getX().get() + _point.getY().get() * other.getPoint().getY().get()
                 + _point.getZ().get() * other.getPoint().getZ().get();
     }
@@ -121,11 +122,9 @@ public class Vector {
     /**
      * Cross product of two vectors
      * 
-     * Vector A = a1*x + b1*y + c1*z Vector B = a2*x + b2*y + c2*z
      * 
-     * A (x) B = (b1*c2 - c1*b2) * x + (c1*a2 - a1*c2) * y + (a1*b2 - b1*a2) * z
      * 
-     * @param other
+     * @param other - Vector
      * @return new Vector
      */
     public Vector crossProduct(Vector other) {

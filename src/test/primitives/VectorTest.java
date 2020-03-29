@@ -29,6 +29,7 @@ public class VectorTest {
      */
     @Test
     public void testVectorZero() throws Exception {
+                // =============== Boundary Values Tests ==================
         try {
             new Vector(0, 0, 0);
             fail("ERROR: zero vector does not throw an exception");

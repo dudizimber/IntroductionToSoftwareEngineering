@@ -14,9 +14,9 @@ public class Cylinder extends Tube {
 
     /**
      * 
-     * @param height
-     * @param radius
-     * @param axisRay
+     * @param height - double   
+     * @param radius    -double 
+     * @param axisRay - Ray
      */
     Cylinder(double height, double radius, Ray axisRay) {
         super(axisRay, radius);
@@ -32,7 +32,7 @@ public class Cylinder extends Tube {
     /****** FUNCTIONS *******/
 
     /**
-     * @param other The point to which we want to get the normal
+     * @param other The point to which we want to get the normal - Point3D
      * @return normal
      */
     @Override

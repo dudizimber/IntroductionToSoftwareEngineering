@@ -24,15 +24,12 @@ public class SphereTest {
 */ 
 @Test
 public void testGetNormal() throws Exception {
-
+// ============ Equivalence Partitions Tests ==============
     Point3D center = new Point3D(0,0,0);
     Point3D point = new Point3D(1, 0,0);
-
     Vector normal = new Vector(1, 0, 0);
-
     Sphere sphere = new Sphere(center, 1);
     Vector sNormal = sphere.getNormal(point);
-
     assertTrue("Error: Sphere getNormal not returning correct value", sNormal.equals(normal));
 
 } 
