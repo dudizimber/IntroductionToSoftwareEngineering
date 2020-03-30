@@ -2,6 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Updated comments&#10;added methods getAsDoubleX(), getAsDoubleY(), getAsDoubleZ() for Point3D class">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geometries/Cylinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geometries/Geometry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geometries/Plane.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geometries/Polygon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geometries/RadialGeometry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geometries/Sphere.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geometries/Triangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geometries/Tube.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Project/test/geometries/PolygonTests.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/primitives/Coordinate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/primitives/Point3D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/primitives/Ray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/primitives/Util.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/primitives/Vector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/geometries/PolygonTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Project/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/Main.class" afterDir="false" />
@@ -24,24 +40,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/Project/test/geometries/TriangleTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/test/geometries/TriangleTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Project/test/geometries/TubeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/test/geometries/TubeTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Project/test/primitives/VectorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/test/primitives/VectorTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/default/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/default/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Geometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Polygon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Triangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Point3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Point3D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Vector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/geometries/CylinderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/geometries/CylinderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/geometries/PlaneTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/geometries/PlaneTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/geometries/SphereTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/geometries/SphereTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/geometries/TriangleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/geometries/TriangleTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/geometries/TubeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/geometries/TubeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/primitives/VectorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/primitives/VectorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/default/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,8 +105,12 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectId" id="1ZLtvfpJIwGJ1NXHY2KQ5YQWGCd" />
@@ -139,8 +142,8 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="geometries.Sphere" />
     <property name="dynamic.classpath" value="false" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Project" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
@@ -330,6 +333,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.PolygonTests" />
+      <item itemvalue="JUnit.test in Project" />
+      <item itemvalue="JUnit.test.geometries in Project" />
+      <item itemvalue="JUnit.VectorTest" />
+      <item itemvalue="JUnit.VectorTest.testCrossProduct" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.test in Project" />
@@ -377,17 +388,15 @@
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="198" key="#File_and_Code_Templates" timestamp="1585209847427">
+    <state x="470" y="130" key="#Project_Structure" timestamp="1585555343530">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="552" y="198" key="#File_and_Code_Templates/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585209847427" />
-    <state x="-1208" y="212" key="#Project_Structure" timestamp="1584631126856">
-      <screen x="-1600" y="104" width="1600" height="900" />
-    </state>
+    <state x="470" y="130" key="#Project_Structure/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585555343530" />
     <state x="-1208" y="212" key="#Project_Structure/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@-1600.104.1600.900" timestamp="1584631126856" />
-    <state x="-1346" y="209" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584630820286">
-      <screen x="-1600" y="104" width="1600" height="900" />
+    <state x="305" y="126" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585555739437">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="305" y="126" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585555739437" />
     <state x="-1346" y="209" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@-1600.104.1600.900" timestamp="1584630820286" />
     <state x="74" y="91" width="1736" height="896" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1585234394574">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -397,13 +406,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="599" y="227" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@0.0.1920.1080" timestamp="1584631764978" />
-    <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser" timestamp="1585212628159">
+    <state x="635" y="281" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1585555538081">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585212628159" />
-    <state x="-1071" y="338" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1584631377065">
-      <screen x="-1600" y="104" width="1600" height="900" />
-    </state>
+    <state x="635" y="281" key="#com.intellij.ide.util.TreeClassChooserDialog/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585555538081" />
     <state x="-1071" y="338" key="#com.intellij.ide.util.TreeClassChooserDialog/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@-1600.104.1600.900" timestamp="1584631377065" />
     <state x="707" y="387" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1585554432528">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -419,31 +425,31 @@
     <state x="607" y="229" key="FileChooserDialogImpl/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585234001747" />
     <state x="-1094" y="295" key="FileChooserDialogImpl/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@-1600.104.1600.900" timestamp="1584631109416" />
     <state x="607" y="229" key="FileChooserDialogImpl/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@0.0.1920.1080" timestamp="1584633527929" />
-    <state width="1877" height="184" key="GridCell.Tab.0.bottom" timestamp="1585554433412">
+    <state width="1338" height="224" key="GridCell.Tab.0.bottom" timestamp="1585560250638">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="184" key="GridCell.Tab.0.bottom/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585554433412" />
+    <state width="1338" height="224" key="GridCell.Tab.0.bottom/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585560250638" />
     <state width="1557" height="235" key="GridCell.Tab.0.bottom/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@-1600.104.1600.900" timestamp="1584630856695" />
     <state width="1877" height="252" key="GridCell.Tab.0.bottom/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@0.0.1920.1080" timestamp="1584636082982" />
     <state width="1245" height="252" key="GridCell.Tab.0.bottom/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585247995922" />
-    <state width="1877" height="184" key="GridCell.Tab.0.center" timestamp="1585554433412">
+    <state width="1338" height="224" key="GridCell.Tab.0.center" timestamp="1585560250637">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="184" key="GridCell.Tab.0.center/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585554433412" />
+    <state width="1338" height="224" key="GridCell.Tab.0.center/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585560250637" />
     <state width="1557" height="235" key="GridCell.Tab.0.center/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@-1600.104.1600.900" timestamp="1584630856695" />
     <state width="1877" height="252" key="GridCell.Tab.0.center/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@0.0.1920.1080" timestamp="1584636082982" />
     <state width="1245" height="252" key="GridCell.Tab.0.center/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585247995921" />
-    <state width="1877" height="184" key="GridCell.Tab.0.left" timestamp="1585554433412">
+    <state width="1338" height="224" key="GridCell.Tab.0.left" timestamp="1585560250637">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="184" key="GridCell.Tab.0.left/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585554433412" />
+    <state width="1338" height="224" key="GridCell.Tab.0.left/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585560250637" />
     <state width="1557" height="235" key="GridCell.Tab.0.left/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@-1600.104.1600.900" timestamp="1584630856694" />
     <state width="1877" height="252" key="GridCell.Tab.0.left/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@0.0.1920.1080" timestamp="1584636082982" />
     <state width="1245" height="252" key="GridCell.Tab.0.left/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585247995921" />
-    <state width="1877" height="184" key="GridCell.Tab.0.right" timestamp="1585554433412">
+    <state width="1338" height="224" key="GridCell.Tab.0.right" timestamp="1585560250637">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="184" key="GridCell.Tab.0.right/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585554433412" />
+    <state width="1338" height="224" key="GridCell.Tab.0.right/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585560250637" />
     <state width="1557" height="235" key="GridCell.Tab.0.right/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@-1600.104.1600.900" timestamp="1584630856695" />
     <state width="1877" height="252" key="GridCell.Tab.0.right/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@0.0.1920.1080" timestamp="1584636082982" />
     <state width="1245" height="252" key="GridCell.Tab.0.right/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585247995922" />
@@ -485,5 +491,26 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="616" y="250" key="run.anything.popup/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@0.0.1920.1080" timestamp="1584631892325" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/geometries/Sphere.java</url>
+          <line>7</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/IntroductionToSoftwareEngineering$Main.ic" NAME="Main Coverage Results" MODIFIED="1585555971269" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>sample.*</FILTER>
+    </SUITE>
   </component>
 </project>
