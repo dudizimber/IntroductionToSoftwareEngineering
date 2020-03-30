@@ -1,5 +1,5 @@
 
-package test.geometries; 
+package test.geometries;
 
 import static org.junit.Assert.*;
 
