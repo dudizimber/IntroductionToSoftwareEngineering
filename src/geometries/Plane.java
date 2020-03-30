@@ -4,19 +4,21 @@ import primitives.Point3D;
 import primitives.Vector;
 
 /**
- * This class represents a 3D Plane
+ * This class represents a Plane in 3D space
+ *
+ * @author David Zimberknopf and Daniel Grunberger
  */
 public class Plane {
-    Point3D _point;
-    Vector _normal;
+    private Point3D _point;
+    private Vector _normal;
 
     /****** CONTRUCTORS *******/
 
     /**
      * Constructor based on a point and the normal
-     * 
-     * @param point
-     * @param normal
+     *
+     * @param point  Point3D
+     * @param normal Vector
      */
     Plane(Point3D point, Vector normal) {
         _point = point;
@@ -25,10 +27,10 @@ public class Plane {
 
     /**
      * Constructor based on three 3D points
-     * 
-     * @param one
-     * @param two
-     * @param three
+     *
+     * @param one   Point3D
+     * @param two   Point3D
+     * @param three Point3D
      */
     public Plane(Point3D one, Point3D two, Point3D three) {
         _point = one;
@@ -61,15 +63,5 @@ public class Plane {
     public String toString() {
         return "Plane:\n - " + this._point.toString() + "\n - " + this._normal.toString();
     }
-
-    // @Override
-    // public boolean equals(Object obj) {
-    //     if (this == obj)
-    //         return true;
-    //     if (obj == null || !(obj instanceof Plane))
-    //         return false;
-    //     Plane plane = (Plane) obj;
-    //     return _normal == plane.getNormal() && _point == plane.getPoint();
-    // }
 
 }

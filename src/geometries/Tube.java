@@ -5,19 +5,21 @@ import primitives.Ray;
 import primitives.Vector;
 
 /**
- * Class that represents a 3D Tube
+ * Class that represents a Tube in 3D space
+ *
+ * @author David Zimberknopf and Daniel Grunberger
  */
 
 public class Tube extends RadialGeometry {
 
-    Ray _axisRay;
+    private Ray _axisRay;
 
     /****** CONSTRUCTORS *******/
     /**
      * Constructor with axisRay and radius
-     * 
-     * @param axisRay
-     * @param radius
+     *
+     * @param axisRay Ray
+     * @param radius  double
      */
     public Tube(Ray axisRay, double radius) {
         super(radius);
@@ -34,14 +36,13 @@ public class Tube extends RadialGeometry {
     /****** FUNCTIONS *******/
 
     /**
-     * @param other - The other point
-     * @return normal
+     * @param other Point3D
+     * @return normal Vector
      */
     public Vector getNormal(Point3D other) {
-        double height = 0;
         double PPo = other.distance(_axisRay.getPoint());
         Vector v = _axisRay.getVector();
-        height = Math.sqrt(Math.pow(PPo, 2) - Math.pow(_radius, 2));
+        double height = Math.sqrt(Math.pow(PPo, 2) - Math.pow(super._radius, 2));
         Point3D center = _axisRay.getPoint().add(v.scale(height));
 
         return center.subtract(other).normalize();

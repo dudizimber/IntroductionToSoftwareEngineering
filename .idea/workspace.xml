@@ -1,20 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Updated comments&#10;added methods getAsDoubleX(), getAsDoubleY(), getAsDoubleZ() for Point3D class">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/geometries/Cylinder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/geometries/Cylinder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/geometries/Geometry.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/geometries/Geometry.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/geometries/Plane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/geometries/Plane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/geometries/Polygon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/geometries/Polygon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/geometries/RadialGeometry.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/geometries/RadialGeometry.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/geometries/Sphere.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/geometries/Sphere.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/geometries/Triangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/geometries/Triangle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/geometries/Tube.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/geometries/Tube.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/primitives/Coordinate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/primitives/Coordinate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/primitives/Point3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/primitives/Point3D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/primitives/Ray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/primitives/Ray.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/primitives/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/primitives/Util.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/primitives/Vector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/primitives/Vector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/test/geometries/CylinderTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/test/geometries/CylinderTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/test/geometries/PlaneTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/test/geometries/PlaneTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/test/geometries/SphereTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/test/geometries/SphereTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/test/geometries/TriangleTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/test/geometries/TriangleTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/test/geometries/TubeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/test/geometries/TubeTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Project/test/primitives/VectorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/test/primitives/VectorTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/default/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/default/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Geometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Polygon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/RadialGeometry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Triangle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Point3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Point3D.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Vector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/geometries/CylinderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/geometries/CylinderTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/geometries/PlaneTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/geometries/PlaneTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/geometries/SphereTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/geometries/SphereTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/geometries/TriangleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/geometries/TriangleTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/geometries/TubeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/geometries/TubeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/primitives/VectorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/primitives/VectorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +107,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectId" id="1ZLtvfpJIwGJ1NXHY2KQ5YQWGCd" />
@@ -105,17 +133,19 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="geometries.Sphere" />
     <property name="dynamic.classpath" value="false" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -128,7 +158,7 @@
       <recent name="C:\Users\Admin\IdeaProjects\Project\out\production\Project\sample" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TubeTest.testGetNormal">
+  <component name="RunManager" selected="JUnit.test in Project">
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -175,7 +205,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SphereTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PolygonTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
         <pattern>
@@ -184,7 +214,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="test.geometries" />
-      <option name="MAIN_CLASS_NAME" value="test.geometries.SphereTest" />
+      <option name="MAIN_CLASS_NAME" value="test.geometries.PolygonTests" />
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="TEST_SEARCH_SCOPE">
@@ -194,56 +224,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SphereTest.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VectorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.geometries.*" />
+          <option name="PATTERN" value="test.primitives.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="test.geometries" />
-      <option name="MAIN_CLASS_NAME" value="test.geometries.SphereTest" />
-      <option name="METHOD_NAME" value="testGetNormal" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TriangleTest.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.geometries" />
-      <option name="MAIN_CLASS_NAME" value="test.geometries.TriangleTest" />
-      <option name="METHOD_NAME" value="testGetNormal" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TubeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.geometries" />
-      <option name="MAIN_CLASS_NAME" value="test.geometries.TubeTest" />
+      <option name="PACKAGE_NAME" value="test.primitives" />
+      <option name="MAIN_CLASS_NAME" value="test.primitives.VectorTest" />
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="TEST_SEARCH_SCOPE">
@@ -253,17 +243,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TubeTest.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VectorTest.testCrossProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test.geometries.*" />
+          <option name="PATTERN" value="test.primitives.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="test.geometries" />
-      <option name="MAIN_CLASS_NAME" value="test.geometries.TubeTest" />
-      <option name="METHOD_NAME" value="testGetNormal" />
+      <option name="PACKAGE_NAME" value="test.primitives" />
+      <option name="MAIN_CLASS_NAME" value="test.primitives.VectorTest" />
+      <option name="METHOD_NAME" value="testCrossProduct" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="TEST_SEARCH_SCOPE">
@@ -275,6 +265,42 @@
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test in Project" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test.geometries in Project" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.geometries.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.geometries" />
+      <option name="TEST_OBJECT" value="package" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="moduleWithDependencies" />
@@ -306,11 +332,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TubeTest.testGetNormal" />
-        <item itemvalue="JUnit.TubeTest" />
-        <item itemvalue="JUnit.SphereTest.testGetNormal" />
-        <item itemvalue="JUnit.SphereTest" />
-        <item itemvalue="JUnit.TriangleTest.testGetNormal" />
+        <item itemvalue="JUnit.test in Project" />
+        <item itemvalue="JUnit.test.geometries in Project" />
+        <item itemvalue="JUnit.PolygonTests" />
+        <item itemvalue="JUnit.VectorTest.testCrossProduct" />
+        <item itemvalue="JUnit.VectorTest" />
       </list>
     </recent_temporary>
   </component>
@@ -326,6 +352,14 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
     </task>
+    <task id="LOCAL-00001" summary="JUnit created">
+      <created>1585215703034</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1585215703035</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -333,7 +367,14 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <MESSAGE value="JUnit created" />
+    <MESSAGE value="Updated comments&#10;added methods getAsDoubleX(), getAsDoubleY(), getAsDoubleZ() for Point3D class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated comments&#10;added methods getAsDoubleX(), getAsDoubleY(), getAsDoubleZ() for Point3D class" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="198" key="#File_and_Code_Templates" timestamp="1585209847427">
@@ -348,6 +389,10 @@
       <screen x="-1600" y="104" width="1600" height="900" />
     </state>
     <state x="-1346" y="209" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@-1600.104.1600.900" timestamp="1584630820286" />
+    <state x="74" y="91" width="1736" height="896" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1585234394574">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="74" y="91" width="1736" height="896" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585234394574" />
     <state x="599" y="227" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog" timestamp="1584631764978">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -360,66 +405,85 @@
       <screen x="-1600" y="104" width="1600" height="900" />
     </state>
     <state x="-1071" y="338" key="#com.intellij.ide.util.TreeClassChooserDialog/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@-1600.104.1600.900" timestamp="1584631377065" />
-    <state x="505" y="134" key="CommitChangelistDialog2" timestamp="1585215671676">
+    <state x="707" y="387" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1585554432528">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="505" y="134" key="CommitChangelistDialog2/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585215671676" />
-    <state x="607" y="229" key="FileChooserDialogImpl" timestamp="1584633527929">
+    <state x="707" y="387" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585554432528" />
+    <state x="505" y="134" key="CommitChangelistDialog2" timestamp="1585554118097">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="505" y="134" key="CommitChangelistDialog2/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585554118097" />
+    <state x="607" y="229" key="FileChooserDialogImpl" timestamp="1585234001747">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="607" y="229" key="FileChooserDialogImpl/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585234001747" />
     <state x="-1094" y="295" key="FileChooserDialogImpl/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@-1600.104.1600.900" timestamp="1584631109416" />
     <state x="607" y="229" key="FileChooserDialogImpl/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@0.0.1920.1080" timestamp="1584633527929" />
-    <state width="1877" height="252" key="GridCell.Tab.0.bottom" timestamp="1585215671895">
+    <state width="1877" height="184" key="GridCell.Tab.0.bottom" timestamp="1585554433412">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="252" key="GridCell.Tab.0.bottom/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585215671895" />
+    <state width="1877" height="184" key="GridCell.Tab.0.bottom/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585554433412" />
     <state width="1557" height="235" key="GridCell.Tab.0.bottom/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@-1600.104.1600.900" timestamp="1584630856695" />
     <state width="1877" height="252" key="GridCell.Tab.0.bottom/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@0.0.1920.1080" timestamp="1584636082982" />
-    <state width="1877" height="252" key="GridCell.Tab.0.center" timestamp="1585215671895">
+    <state width="1245" height="252" key="GridCell.Tab.0.bottom/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585247995922" />
+    <state width="1877" height="184" key="GridCell.Tab.0.center" timestamp="1585554433412">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="252" key="GridCell.Tab.0.center/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585215671895" />
+    <state width="1877" height="184" key="GridCell.Tab.0.center/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585554433412" />
     <state width="1557" height="235" key="GridCell.Tab.0.center/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@-1600.104.1600.900" timestamp="1584630856695" />
     <state width="1877" height="252" key="GridCell.Tab.0.center/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@0.0.1920.1080" timestamp="1584636082982" />
-    <state width="1877" height="252" key="GridCell.Tab.0.left" timestamp="1585215671894">
+    <state width="1245" height="252" key="GridCell.Tab.0.center/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585247995921" />
+    <state width="1877" height="184" key="GridCell.Tab.0.left" timestamp="1585554433412">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="252" key="GridCell.Tab.0.left/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585215671894" />
+    <state width="1877" height="184" key="GridCell.Tab.0.left/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585554433412" />
     <state width="1557" height="235" key="GridCell.Tab.0.left/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@-1600.104.1600.900" timestamp="1584630856694" />
     <state width="1877" height="252" key="GridCell.Tab.0.left/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@0.0.1920.1080" timestamp="1584636082982" />
-    <state width="1877" height="252" key="GridCell.Tab.0.right" timestamp="1585215671895">
+    <state width="1245" height="252" key="GridCell.Tab.0.left/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585247995921" />
+    <state width="1877" height="184" key="GridCell.Tab.0.right" timestamp="1585554433412">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="252" key="GridCell.Tab.0.right/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585215671895" />
+    <state width="1877" height="184" key="GridCell.Tab.0.right/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585554433412" />
     <state width="1557" height="235" key="GridCell.Tab.0.right/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@-1600.104.1600.900" timestamp="1584630856695" />
     <state width="1877" height="252" key="GridCell.Tab.0.right/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@0.0.1920.1080" timestamp="1584636082982" />
-    <state x="361" y="59" key="SettingsEditor" timestamp="1584632093280">
+    <state width="1245" height="252" key="GridCell.Tab.0.right/1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585247995922" />
+    <state x="184" y="90" key="MergeDialog" timestamp="1585552619981">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="184" y="90" key="MergeDialog/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585552619981" />
+    <state x="672" y="256" key="MultipleFileMergeDialog" timestamp="1585552620010">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="672" y="256" key="MultipleFileMergeDialog/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585552620010" />
+    <state x="361" y="59" key="SettingsEditor" timestamp="1585234005391">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="361" y="59" key="SettingsEditor/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585234005391" />
     <state x="-1299" y="153" key="SettingsEditor/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@-1600.104.1600.900" timestamp="1584631282410" />
     <state x="361" y="59" key="SettingsEditor/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@0.0.1920.1080" timestamp="1584632093280" />
+    <state x="552" y="273" key="Vcs.Push.Dialog.v2" timestamp="1585215781296">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="552" y="273" key="Vcs.Push.Dialog.v2/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585215781296" />
     <state x="-1096" y="447" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1584631475457">
       <screen x="-1600" y="104" width="1600" height="900" />
     </state>
     <state x="-1096" y="447" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@-1600.104.1600.900" timestamp="1584631475457" />
+    <state x="769" y="457" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585552254241">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="769" y="457" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585552254241" />
     <state x="-1029" y="257" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1584631383846">
       <screen x="-1600" y="104" width="1600" height="900" />
     </state>
     <state x="-1029" y="257" key="com.intellij.testIntegration.createTest.CreateTestDialog/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@-1600.104.1600.900" timestamp="1584631383846" />
+    <state x="591" y="85" width="737" height="909" key="find.popup" timestamp="1585553501112">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="591" y="85" width="737" height="909" key="find.popup/-1920.0.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1585553501112" />
     <state x="616" y="250" key="run.anything.popup" timestamp="1584631892325">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="616" y="250" key="run.anything.popup/1920.0.1536.864/0.0.1920.1080/-1600.104.1600.900@0.0.1920.1080" timestamp="1584631892325" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/geometries/Sphere.java</url>
-          <line>8</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

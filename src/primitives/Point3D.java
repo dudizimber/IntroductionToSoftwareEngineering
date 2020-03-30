@@ -2,6 +2,8 @@ package primitives;
 
 /**
  * A class that represents a point in 3d space
+ *
+ * @author David Zimberknopf and Daniel Grunberger
  */
 public class Point3D {
 
@@ -15,10 +17,10 @@ public class Point3D {
 
     /**
      * Constructor based on three doubles that we turn into coordinates
-     * 
-     * @param x
-     * @param y
-     * @param z
+     *
+     * @param x double
+     * @param y double
+     * @param z double
      */
     public Point3D(double x, double y, double z) {
         _x = new Coordinate(x);
@@ -28,10 +30,10 @@ public class Point3D {
 
     /**
      * Constructor based on 3 coordinates
-     * 
-     * @param x
-     * @param y
-     * @param z
+     *
+     * @param x Coordinate
+     * @param y Coordinate
+     * @param z Coordinate
      */
     Point3D(Coordinate x, Coordinate y, Coordinate z) {
         _x = new Coordinate(x.get());
@@ -41,8 +43,8 @@ public class Point3D {
 
     /**
      * Constructor based on a point
-     * 
-     * @param point
+     *
+     * @param point Point3D
      */
     Point3D(final Point3D point) {
         _x = point.getX();
@@ -64,17 +66,29 @@ public class Point3D {
         return _z;
     }
 
+    public double getAsDoubleX() {
+        return _x.get();
+    }
+
+    public double getAsDoubleY() {
+        return _y.get();
+    }
+
+    public double getAsDoubleZ() {
+        return _z.get();
+    }
+
     /****** FUNCTIONS *******/
 
     /**
      * Returns a new Vector which it's coordinates are the subtraction of other
      * point by this point
-     * 
+     *
      * @param other Point3D
      * @return new Vector created by the subtraction [other - this]
      */
     public Vector subtract(Point3D other) {
-        return new Vector(other.getX().get() - _x.get(), other.getY().get() - _y.get(), other.getZ().get() - _z.get());
+        return new Vector(other.getAsDoubleX() - getAsDoubleX(), other.getAsDoubleY() - getAsDoubleY(), other.getAsDoubleZ() - getAsDoubleZ());
     }
 
     /**
@@ -85,27 +99,29 @@ public class Point3D {
      * @return new Vector created by the sum [other + this]
      */
     public Point3D add(Vector other) {
-        return new Point3D(_x.get() + other.getPoint().getX().get(), _y.get() + other.getPoint().getY().get(),
-                _z.get() + other.getPoint().getZ().get());
+        double x = getAsDoubleX() + other.getPoint().getAsDoubleX();
+        double y = getAsDoubleY() + other.getPoint().getAsDoubleY();
+        double z = getAsDoubleZ() + other.getPoint().getAsDoubleZ();
+        return new Point3D(x, y, z);
     }
 
     /**
      * Return the squared distance of two 3d points
-     * 
-     * @param other
+     *
+     * @param other Point3D
      * @return double The distance between [this, other]
      */
     public double distanceSquared(Point3D other) {
-        double newX = _x.get() - other.getX().get();
-        double newY = _y.get() - other.getY().get();
-        double newZ = _z.get() - other.getZ().get();
+        double newX = getAsDoubleX() - other.getAsDoubleX();
+        double newY = getAsDoubleY() - other.getAsDoubleY();
+        double newZ = getAsDoubleZ() - other.getAsDoubleZ();
         return (newX * newX) + (newY * newY) + (newZ * newZ);
     }
 
     /**
      * Returns the distance of the vector to the 3d point
-     * 
-     * @param other
+     *
+     * @param other Point3D
      * @return double The squared root of the distance squared
      */
     public double distance(Point3D other) {
@@ -121,10 +137,11 @@ public class Point3D {
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        if (obj == null || !(obj instanceof Point3D))
+        if (obj == null) return false;
+        if (!(obj instanceof Point3D))
             return false;
         Point3D point = (Point3D) obj;
-        return point.getX() == _x && point.getY() == _y && point.getZ() == _z;
+        return point.getX().equals(_x) && point.getY().equals(_y) && point.getZ().equals(_z);
     }
 
 }

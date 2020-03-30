@@ -1,15 +1,14 @@
-import primitives.*;
+import primitives.Vector;
+
 import static java.lang.System.out;
-import static primitives.Util.*;
+import static primitives.Util.isZero;
+
 
 /**
- * 
  * @author David Zimberknopf
- * @studentNumber	000165078
- * 
- * @author Saniel Grunberger
- * @studentNumber	000522883
- *
+ * @studentNumber 000165078
+ * @author Daniel Grunberger
+ * @studentNumber 000522883
  */
 
 /**
@@ -75,4 +74,5 @@ public final class Main {
 		
 		out.println("If there were no any other outputs - all tests succeeded!");
 	}
+
 }

@@ -5,6 +5,8 @@ import primitives.Vector;
 
 /**
  * Triangle class. Is a polygon with 3 points only
+ *
+ * @author David Zimberknopf and Daniel Grunberger
  */
 public class Triangle extends Polygon {
 
@@ -12,9 +14,13 @@ public class Triangle extends Polygon {
 
     /**
      * Constructor based on the three points.
+     *
+     * @param one   Point3D
+     * @param two   Point3D
+     * @param three Point3D
      */
     public Triangle(Point3D one, Point3D two, Point3D three) {
-        super(new Point3D[] { one, two, three });
+        super(one, two, three);
     }
 
     /****** FUNCTIONS *******/
@@ -29,14 +35,5 @@ public class Triangle extends Polygon {
         return super.getNormal(point);
     }
 
-    // @Override
-    // public boolean equals(Object obj) {
-    //     if (this == obj)
-    //         return true;
-    //     if (obj == null || !(obj instanceof Triangle))
-    //         return false;
-    //     Triangle tri = (Triangle) obj;
-    //     return _plane == tri._plane && _vertices == tri._vertices;
-    // }
 
 }
