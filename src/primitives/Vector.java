@@ -2,58 +2,58 @@ package primitives;
 
 /**
  * A class that represents a vector in 3d space
+ *
+ * @author David Zimberknopf and Daniel Grunberger
  */
 public class Vector {
-    Point3D _point;
+    private Point3D _point;
 
-    /****** CONTRUCTORS *******/
+    /****** CONSTRUCTORS *******/
 
     /**
      * Constructor based on three numbers that we turn into coordinates Throws
      * Exception if all params are zero
-     * 
-     * @param x
-     * @param y
-     * @param z
-     * 
+     *
+     * @param x -double
+     * @param y - double
+     * @param z - double
      */
     public Vector(final double x, final double y, final double z) {
-        if (Util.isZero(x) && Util.isZero(y) && Util.isZero(z))
-            throw new IllegalArgumentException("Vector cannot be zero");
         _point = new Point3D(x, y, z);
+        if (_point.equals(Point3D.ZERO))
+            throw new IllegalArgumentException("Vector cannot be zero");
     }
 
     /**
      * Constructor based on three coordinates Throws Exception if all params are
      * zero.
      * 
-     * @param x
-     * @param y
-     * @param z
+     * @param x - Coordinate
+     * @param y - Coordinate
+     * @param z - Coordinate
      * 
      */
     Vector(final Coordinate x, final Coordinate y, final Coordinate z) {
-        if (Util.isZero(x.get()) && Util.isZero(y.get()) && Util.isZero(z.get()))
-            throw new IllegalArgumentException("Vector cannot be zero");
         _point = new Point3D(x, y, z);
+        if (_point.equals(Point3D.ZERO))
+            throw new IllegalArgumentException("Vector cannot be zero");
     }
 
     /**
-     * Construcotr based on 3d point Throws Exception if all params are zero.
-     * 
-     * @param point
-     * 
+     * Constructor based on 3d point Throws Exception if all params are zero.
+     *
+     * @param point - Point3D
      */
     Vector(final Point3D point) {
-        if (Util.isZero(point.getX().get()) && Util.isZero(point.getY().get()) && Util.isZero(point.getZ().get()))
-            throw new IllegalArgumentException("Vector cannot be zero");
         _point = new Point3D(point);
+        if (_point.equals(Point3D.ZERO))
+            throw new IllegalArgumentException("Vector cannot be zero");
     }
 
     /**
      * Constructor based on vector
      * 
-     * @param vector
+     * @param vector - Vector
      * 
      */
     public Vector(final Vector vector) {
@@ -71,82 +71,81 @@ public class Vector {
     /**
      * Sum of two vectors
      * 
-     * @param other
+     * @param other - Vector
      * @return new Vector [other + this]
      */
     public Vector add(Vector other) {
-        return new Vector(_point.getX().get() + other.getPoint().getX().get(),
-                _point.getY().get() + other.getPoint().getY().get(),
-                _point.getZ().get() + other.getPoint().getZ().get());
+        return new Vector(_point.getAsDoubleX() + other.getPoint().getAsDoubleX(),
+                _point.getAsDoubleY() + other.getPoint().getAsDoubleY(),
+                _point.getAsDoubleZ() + other.getPoint().getAsDoubleZ());
     }
 
     /**
      * Substract one vector (other) from the other (this)
      * 
-     * @param other
+     * @param other - Vector
      * @return new Vector [this - other]
      */
     public Vector subtract(Vector other) {
-        return new Vector(_point.getX().get() - other.getPoint().getX().get(),
-                _point.getY().get() - other.getPoint().getY().get(),
-                _point.getZ().get() - other.getPoint().getZ().get());
+        return new Vector(_point.getAsDoubleX() - other.getPoint().getAsDoubleX(),
+                _point.getAsDoubleY() - other.getPoint().getAsDoubleY(),
+                _point.getAsDoubleZ() - other.getPoint().getAsDoubleZ());
     }
 
     /**
      * Multiplies the vector by constant
      * 
-     * @param constant
+     * @param constant - double
      * @return new Vector [constant * this]
      */
     public Vector scale(double constant) {
-        return new Vector(_point.getX().get() * constant, _point.getY().get() * constant,
-                _point.getZ().get() * constant);
+        return new Vector(_point.getAsDoubleX() * constant, _point.getAsDoubleY() * constant,
+                _point.getAsDoubleZ() * constant);
     }
 
     /**
-     * Dot product of two vectors The mathematical formula is the sum of the
-     * multiplied components: Vector A = a1*x + b1*y + c1*z Vector B = a2*x + b2*y +
-     * c2*z
-     * 
-     * A (.) B = a1*a2 + b1*b2 + c1*c2
-     * 
-     * @param other
+     * Dot product of two vectors
+     *
+     * @param other - Vector
      * @return double - dot product of the vectors [this (.) other]
      */
     public double dotProduct(Vector other) {
-        return _point.getX().get() * other.getPoint().getX().get() + _point.getY().get() * other.getPoint().getY().get()
-                + _point.getZ().get() * other.getPoint().getZ().get();
+        double x1 = _point.getAsDoubleX();
+        double y1 = _point.getAsDoubleY();
+        double z1 = _point.getAsDoubleZ();
+        double x2 = other.getPoint().getAsDoubleX();
+        double y2 = other.getPoint().getAsDoubleY();
+        double z2 = other.getPoint().getAsDoubleZ();
+        return x1 * x2 + y1 * y2 + z1 * z2;
     }
 
     /**
      * Cross product of two vectors
-     * 
-     * Vector A = a1*x + b1*y + c1*z Vector B = a2*x + b2*y + c2*z
-     * 
-     * A (x) B = (b1*c2 - c1*b2) * x + (c1*a2 - a1*c2) * y + (a1*b2 - b1*a2) * z
-     * 
-     * @param other
+     *
+     * @param other - Vector
      * @return new Vector
      */
     public Vector crossProduct(Vector other) {
-        double newX = _point.getY().get() * other.getPoint().getZ().get()
-                - _point.getZ().get() * other.getPoint().getY().get();
-        double newY = _point.getZ().get() * other.getPoint().getX().get()
-                - _point.getX().get() * other.getPoint().getZ().get();
-        double newZ = _point.getX().get() * other.getPoint().getY().get()
-                - _point.getY().get() * other.getPoint().getX().get();
-                
+        double x1 = _point.getAsDoubleX();
+        double y1 = _point.getAsDoubleY();
+        double z1 = _point.getAsDoubleZ();
+        double x2 = other.getPoint().getAsDoubleX();
+        double y2 = other.getPoint().getAsDoubleY();
+        double z2 = other.getPoint().getAsDoubleZ();
+        double newX = y1 * z2 - z1 * y2;
+        double newY = z1 * x2 - x1 * z2;
+        double newZ = x1 * y2 - y1 * x2;
         return new Vector(newX, newY, newZ);
     }
 
     /**
      * Squared length of the vector. Measured with the distance between the vector
      * point to vector zero
-     * 
-     * @return Squared lenght of the vector
+     *
+     * @return Squared length of the vector
      */
     public double lengthSquared() {
-        return _point.distanceSquared(Point3D.ZERO);
+        return Math.pow(_point.getAsDoubleX(), 2) + Math.pow(_point.getAsDoubleY(), 2) + Math.pow(_point.getAsDoubleZ(), 2);
     }
 
     /**
@@ -165,8 +164,7 @@ public class Vector {
      */
     public Vector normalize() {
         double len = this.length();
-        Vector newVector = this.scale(1 / len);
-        _point = newVector.getPoint();
+        _point = new Point3D(_point.getAsDoubleX() / len, _point.getAsDoubleY() / len, _point.getAsDoubleZ() / len);
         return this;
     }
 
@@ -176,8 +174,7 @@ public class Vector {
      * @return new normalized copy of this Vector
      */
     public Vector normalized() {
-        Vector vec = new Vector(this);
-        return vec.normalize();
+        return new Vector(this).normalize();
     }
 
     @Override
@@ -189,11 +186,11 @@ public class Vector {
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        if (obj == null || !(obj instanceof Vector))
+        if (obj == null) return false;
+        if (!(obj instanceof Vector))
             return false;
         Vector vector = (Vector) obj;
-        return _point.getX() == vector.getPoint().getX() && _point.getY() == vector.getPoint().getY()
-                && _point.getZ() == vector.getPoint().getZ();
+        return _point.equals(vector.getPoint());
     }
 
 }

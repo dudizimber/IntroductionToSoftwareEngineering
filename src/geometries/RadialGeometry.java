@@ -1,17 +1,20 @@
 package geometries;
 
 /**
- * Radial Geometry class
+ * Radial Geometry class. Used in any Class with radius
+ * property
+ *
+ * @author David Zimberknopf and Daniel Grunberger
  */
 abstract class RadialGeometry {
-    double _radius;
+    protected double _radius;
 
     /****** CONSTRUCTORS *******/
 
     /**
      * Constructor base on double
-     * 
-     * @param radius
+     *
+     * @param radius double
      */
     RadialGeometry(double radius) {
         _radius = radius;
@@ -19,8 +22,8 @@ abstract class RadialGeometry {
 
     /**
      * Constructor base on RadialGeometry
-     * 
-     * @param other
+     *
+     * @param other RadialGeometry
      */
 
     RadialGeometry(RadialGeometry other) {

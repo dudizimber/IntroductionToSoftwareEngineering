@@ -5,23 +5,26 @@ import primitives.Ray;
 import primitives.Vector;
 
 /**
- * Class that represents a 3D Tube
+ * Class that represents a Tube in 3D space
+ *
+ * @author David Zimberknopf and Daniel Grunberger
  */
 
-class Tube extends RadialGeometry {
+public class Tube extends RadialGeometry {
 
-    Ray _axisRay;
+    private Ray _axisRay;
 
     /****** CONSTRUCTORS *******/
     /**
      * Constructor with axisRay and radius
-     * 
-     * @param axisRay
-     * @param radius
+     *
+     * @param axisRay Ray
+     * @param radius  double
      */
-    Tube(Ray axisRay, double radius) {
+    public Tube(Ray axisRay, double radius) {
         super(radius);
         _axisRay = axisRay;
+
     }
 
     /****** GETTERS *******/
@@ -33,26 +36,21 @@ class Tube extends RadialGeometry {
     /****** FUNCTIONS *******/
 
     /**
-     * @param other - The other point
-     * @return normal
+     * @param other Point3D
+     * @return normal Vector
      */
-    Vector getNormal(Point3D other) {
-        return null;
+    public Vector getNormal(Point3D other) {
+        double PPo = other.distance(_axisRay.getPoint());
+        Vector v = _axisRay.getVector();
+        double height = Math.sqrt(Math.pow(PPo, 2) - Math.pow(super._radius, 2));
+        Point3D center = _axisRay.getPoint().add(v.scale(height));
+
+        return center.subtract(other).normalize();
     }
 
     @Override
     public String toString() {
         return "Tube:\n" + " - " + this._axisRay.toString() + "\n - " + super.toString();
     }
-
-    // @Override
-    // public boolean equals(Object obj) {
-    //     if (this == obj)
-    //         return true;
-    //     if (obj == null || !(obj instanceof Tube))
-    //         return false;
-    //     Tube tube = (Tube) obj;
-    //     return _axisRay == tube.geAxisRay() && _radius == tube.getRadius();
-    // }
 
 }

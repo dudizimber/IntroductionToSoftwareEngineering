@@ -5,18 +5,19 @@ import primitives.Ray;
 import primitives.Vector;
 
 /**
- * This class represents a cylinder, which is a Tube with definite height
+ * This class represents a cylinder in 3D space, which is a Tube with finite height
+ *
+ * @author David Zimberknopf and Daniel Grunberger
  */
 public class Cylinder extends Tube {
-    double _height;
+    private double _height;
 
-    /****** CONTRUCTORS *******/
+    /****** CONSTRUCTORS *******/
 
     /**
-     * 
-     * @param height
-     * @param radius
-     * @param axisRay
+     * @param height  double
+     * @param radius  double
+     * @param axisRay Ray
      */
     Cylinder(double height, double radius, Ray axisRay) {
         super(axisRay, radius);
@@ -32,10 +33,11 @@ public class Cylinder extends Tube {
     /****** FUNCTIONS *******/
 
     /**
-     * @param other The point to which we want to get the normal
+     * @param other The point to which we want to get the normal - Point3D
      * @return normal
      */
-    Vector getNormal(Point3D other) {
+    @Override
+    public Vector getNormal(Point3D other) {
         return null;
     }
 
@@ -44,13 +46,4 @@ public class Cylinder extends Tube {
         return "Cylinder: \n" + " - height: " + this._height + "\n - " + super.toString();
     }
 
-    // @Override
-    // public boolean equals(Object obj) {
-    //     if (this == obj)
-    //         return true;
-    //     if (obj == null || !(obj instanceof Cylinder))
-    //         return false;
-    //     Cylinder cylinder = (Cylinder) obj;
-    //     return _axisRay == cylinder.geAxisRay() && _height == cylinder.getHeight() && _radius == cylinder.getRadius();
-    // }
 }
