@@ -38,6 +38,10 @@ public class Ray {
 
     /****** FUNCTIONS *******/
 
+    /**
+     * @param length distance to scale vector
+     * @return point in Ray
+     */
     public Point3D getPoint(double length) {
         return Util.isZero(length) ? _point : _point.add(_vector.scale(length));
     }

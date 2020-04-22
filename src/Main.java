@@ -4,13 +4,10 @@ import static java.lang.System.out;
 import static primitives.Util.isZero;
 
 /**
- * 
  * @author David Zimberknopf
- * @studentNumber	000165078
- * 
- * @author Saniel Grunberger
- * @studentNumber	000522883
- *
+ * @studentNumber 000165078
+ * @author Daniel Grunberger
+ * @studentNumber 000522883
  */
 
 /**

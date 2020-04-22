@@ -14,11 +14,11 @@ import static primitives.Util.isZero;
  *
  * @author David Zimberknopf and Daniel Grunberger
  */
-public class Plane {
+public class Plane implements Geometry {
     private Point3D _point;
     private Vector _normal;
 
-    /****** CONTRUCTORS *******/
+    /****** CONSTRUCTORS *******/
 
     /**
      * Constructor based on a point and the normal
@@ -61,7 +61,8 @@ public class Plane {
     /**
      * @return normal
      */
-    public Vector getNormal() {
+    @Override
+    public Vector getNormal(Point3D point) {
         return _normal;
     }
 

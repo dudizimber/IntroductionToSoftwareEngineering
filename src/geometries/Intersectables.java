@@ -12,5 +12,11 @@ import java.util.List;
  */
 public interface Intersectables {
 
+    /**
+     * Find intersections of a Ray with the Object(s)
+     *
+     * @param ray The Ray to intersect
+     * @return List of intersection points
+     */
     List<Point3D> findIntersections(Ray ray);
 }
