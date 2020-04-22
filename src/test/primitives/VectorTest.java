@@ -32,9 +32,7 @@ public class VectorTest {
 
 
     /**
-     *
      * Test method for {@link Vector#add(Vector)}.
-     *
      */
     @Test
     public void testAdd() {

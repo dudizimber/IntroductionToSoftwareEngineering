@@ -38,6 +38,11 @@ public class Ray {
 
     /****** FUNCTIONS *******/
 
+    public Point3D getPoint(double length) {
+        return Util.isZero(length) ? _point : _point.add(_vector.scale(length));
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

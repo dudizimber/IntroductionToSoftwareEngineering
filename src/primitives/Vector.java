@@ -27,11 +27,10 @@ public class Vector {
     /**
      * Constructor based on three coordinates Throws Exception if all params are
      * zero.
-     * 
+     *
      * @param x - Coordinate
      * @param y - Coordinate
      * @param z - Coordinate
-     * 
      */
     Vector(final Coordinate x, final Coordinate y, final Coordinate z) {
         _point = new Point3D(x, y, z);
@@ -52,9 +51,9 @@ public class Vector {
 
     /**
      * Constructor based on vector
-     * 
+     *
      * @param vector - Vector
-     * 
+     *
      */
     public Vector(final Vector vector) {
         _point = new Point3D(vector.getPoint());
@@ -70,7 +69,7 @@ public class Vector {
 
     /**
      * Sum of two vectors
-     * 
+     *
      * @param other - Vector
      * @return new Vector [other + this]
      */
@@ -82,7 +81,7 @@ public class Vector {
 
     /**
      * Substract one vector (other) from the other (this)
-     * 
+     *
      * @param other - Vector
      * @return new Vector [this - other]
      */
@@ -94,7 +93,7 @@ public class Vector {
 
     /**
      * Multiplies the vector by constant
-     * 
+     *
      * @param constant - double
      * @return new Vector [constant * this]
      */
@@ -145,7 +144,7 @@ public class Vector {
      * @return Squared length of the vector
      */
     public double lengthSquared() {
-        return Math.pow(_point.getAsDoubleX(), 2) + Math.pow(_point.getAsDoubleY(), 2) + Math.pow(_point.getAsDoubleZ(), 2);
+        return _point.getAsDoubleX() * _point.getAsDoubleX() + _point.getAsDoubleY() * _point.getAsDoubleY() + _point.getAsDoubleZ() * _point.getAsDoubleZ();
     }
 
     /**

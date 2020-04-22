@@ -25,7 +25,7 @@ public class TubeTest {
         Tube tube = new geometries.Tube(ray, 1);
         Point3D point = new Point3D(1, 1, 0);
         Vector tNormal = tube.getNormal(point);
-        assertTrue("Error: Tube getNormal not returning correct value", tNormal.equals(new Vector(0, 1, 0)));
+        assertTrue("Error: Tube getNormal not returning correct value", tNormal.equals(new Vector(0, -1, 0)));
     }
 
 

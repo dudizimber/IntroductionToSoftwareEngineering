@@ -1,6 +1,7 @@
 package geometries;
 
 import primitives.Point3D;
+import primitives.Ray;
 import primitives.Vector;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class Polygon implements Geometry {
     /**
      * Polygon constructor based on vertices list. The list must be ordered by edge
      * path. The polygon must be convex.
-     * 
+     *
      * @param vertices list of vertices according to their order by edge path
      * @throws IllegalArgumentException in any case of illegal combination of
      *                                  vertices:
@@ -82,6 +83,17 @@ public class Polygon implements Geometry {
                 throw new IllegalArgumentException("All vertices must be ordered and the polygon must be convex");
         }
     }
+
+    /**
+     * Finds the intersections of a Ray with the current Object
+     *
+     * @param ray The ray to intersect
+     * @return List of the intersections - 3D points
+     */
+    public List<Point3D> findIntersections(Ray ray) {
+        return null;
+    }
+
 
     @Override
     public Vector getNormal(Point3D point) {

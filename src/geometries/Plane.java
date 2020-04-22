@@ -1,7 +1,13 @@
 package geometries;
 
 import primitives.Point3D;
+import primitives.Ray;
 import primitives.Vector;
+
+import java.util.List;
+
+import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
 
 /**
  * This class represents a Plane in 3D space
@@ -20,7 +26,7 @@ public class Plane {
      * @param point  Point3D
      * @param normal Vector
      */
-    Plane(Point3D point, Vector normal) {
+    public Plane(Point3D point, Vector normal) {
         _point = point;
         _normal = normal;
     }
@@ -57,6 +63,39 @@ public class Plane {
      */
     public Vector getNormal() {
         return _normal;
+    }
+
+    /**
+     * Finds the intersections of a Ray with the current Object
+     *
+     * @param ray The ray to intersect
+     * @return List of the intersections - 3D points
+     */
+    public List<Point3D> findIntersections(Ray ray) {
+
+        Point3D p0 = ray.getPoint();
+        Vector v = ray.getVector();
+        Vector q0p0;
+        try {
+            q0p0 = _point.subtract(p0);
+        } catch (IllegalArgumentException e) {
+            // Ray starts from inside plane, therefore there are no intersections
+            return null;
+        }
+
+        double tDenominator = _normal.dotProduct(v);
+
+        if (isZero(tDenominator)) {
+            // Parallel vectors
+            return null;
+        }
+
+        double tNumerator = _normal.dotProduct(q0p0);
+
+        double t = alignZero(tNumerator / tDenominator);
+
+        if (t <= 0) return null;
+        else return List.of(ray.getPoint(t));
     }
 
     @Override
