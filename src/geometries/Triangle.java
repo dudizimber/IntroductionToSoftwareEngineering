@@ -20,12 +20,12 @@ public class Triangle extends Polygon {
     /**
      * Constructor based on the three points.
      *
-     * @param one   Point3D
-     * @param two   Point3D
-     * @param three Point3D
+     * @param First_point   Point3D
+     * @param Second_point  Point3D
+     * @param Third_point Point3D
      */
-    public Triangle(Point3D one, Point3D two, Point3D three) {
-        super(one, two, three);
+    public Triangle(Point3D First_point, Point3D Second_point, Point3D Third_point) {
+        super(First_point, Second_point, Third_point);
     }
 
     /****** FUNCTIONS *******/
@@ -62,11 +62,6 @@ public class Triangle extends Polygon {
     @Override
     public String toString() {
         return "Triangle:\n - " + super.toString();
-    }
-
-    @Override
-    public Vector getNormal(Point3D point) {
-        return super.getNormal(point);
     }
 
 
