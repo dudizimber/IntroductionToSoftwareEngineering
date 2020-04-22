@@ -18,9 +18,9 @@ public class Point3D {
     /**
      * Constructor based on three doubles that we turn into coordinates
      *
-     * @param x double
-     * @param y double
-     * @param z double
+     * @param x
+     * @param y
+     * @param z
      */
     public Point3D(double x, double y, double z) {
         _x = new Coordinate(x);
@@ -31,9 +31,9 @@ public class Point3D {
     /**
      * Constructor based on 3 coordinates
      *
-     * @param x Coordinate
-     * @param y Coordinate
-     * @param z Coordinate
+     * @param x
+     * @param y
+     * @param z
      */
     Point3D(Coordinate x, Coordinate y, Coordinate z) {
         _x = new Coordinate(x.get());
@@ -44,7 +44,7 @@ public class Point3D {
     /**
      * Constructor based on a point
      *
-     * @param point Point3D
+     * @param point
      */
     Point3D(final Point3D point) {
         _x = point.getX();
@@ -84,7 +84,7 @@ public class Point3D {
      * Returns a new Vector which it's coordinates are the subtraction of other
      * point by this point
      *
-     * @param other Point3D
+     * @param other
      * @return new Vector created by the subtraction [other - this]
      */
     public Vector subtract(Point3D other) {

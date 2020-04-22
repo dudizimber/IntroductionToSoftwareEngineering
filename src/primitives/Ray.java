@@ -17,8 +17,8 @@ public class Ray {
     /**
      * Constructor based on point and vector
      *
-     * @param point  Point3D
-     * @param vector Vector
+     * @param point
+     * @param vector
      */
     public Ray(Point3D point, Vector vector) {
         _point = point;

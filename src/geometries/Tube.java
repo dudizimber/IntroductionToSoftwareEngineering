@@ -20,8 +20,8 @@ public class Tube extends RadialGeometry {
     /**
      * Constructor with axisRay and radius
      *
-     * @param axisRay Ray
-     * @param radius  double
+     * @param axisRay
+     * @param radius
      */
     public Tube(Ray axisRay, double radius) {
         super(radius);
@@ -38,16 +38,16 @@ public class Tube extends RadialGeometry {
     /****** FUNCTIONS *******/
 
     /**
-     * @param other Point3D
-     * @return normal Vector
+     * @param point
+     * @return normal
      */
-    public Vector getNormal(Point3D other) {
-        double PPo = other.distance(_axisRay.getPoint());
+    public Vector getNormal(Point3D point) {
+        double PPo = point.distance(_axisRay.getPoint());
         Vector v = _axisRay.getVector();
-        double height = Math.sqrt(Math.pow(PPo, 2) - Math.pow(super._radius, 2));
+        double height = Math.sqrt(PPo*PPo - super._radius*super._radius);
         Point3D center = _axisRay.getPoint().add(v.scale(height));
 
-        return center.subtract(other).normalize();
+        return center.subtract(point).normalize();
     }
 
     @Override

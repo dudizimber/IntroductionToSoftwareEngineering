@@ -14,9 +14,9 @@ public class Vector {
      * Constructor based on three numbers that we turn into coordinates Throws
      * Exception if all params are zero
      *
-     * @param x -double
-     * @param y - double
-     * @param z - double
+     * @param x
+     * @param y
+     * @param z
      */
     public Vector(final double x, final double y, final double z) {
         _point = new Point3D(x, y, z);
@@ -28,9 +28,9 @@ public class Vector {
      * Constructor based on three coordinates Throws Exception if all params are
      * zero.
      *
-     * @param x - Coordinate
-     * @param y - Coordinate
-     * @param z - Coordinate
+     * @param x
+     * @param y
+     * @param z
      */
     Vector(final Coordinate x, final Coordinate y, final Coordinate z) {
         _point = new Point3D(x, y, z);
@@ -41,7 +41,7 @@ public class Vector {
     /**
      * Constructor based on 3d point Throws Exception if all params are zero.
      *
-     * @param point - Point3D
+     * @param point
      */
     Vector(final Point3D point) {
         _point = new Point3D(point);
@@ -52,7 +52,7 @@ public class Vector {
     /**
      * Constructor based on vector
      *
-     * @param vector - Vector
+     * @param vector
      *
      */
     public Vector(final Vector vector) {
@@ -70,7 +70,7 @@ public class Vector {
     /**
      * Sum of two vectors
      *
-     * @param other - Vector
+     * @param other
      * @return new Vector [other + this]
      */
     public Vector add(Vector other) {
@@ -82,7 +82,7 @@ public class Vector {
     /**
      * Substract one vector (other) from the other (this)
      *
-     * @param other - Vector
+     * @param other
      * @return new Vector [this - other]
      */
     public Vector subtract(Vector other) {
@@ -94,7 +94,7 @@ public class Vector {
     /**
      * Multiplies the vector by constant
      *
-     * @param constant - double
+     * @param constant
      * @return new Vector [constant * this]
      */
     public Vector scale(double constant) {
@@ -105,7 +105,7 @@ public class Vector {
     /**
      * Dot product of two vectors
      *
-     * @param other - Vector
+     * @param other
      * @return double - dot product of the vectors [this (.) other]
      */
     public double dotProduct(Vector other) {
@@ -121,7 +121,7 @@ public class Vector {
     /**
      * Cross product of two vectors
      *
-     * @param other - Vector
+     * @param other
      * @return new Vector
      */
     public Vector crossProduct(Vector other) {

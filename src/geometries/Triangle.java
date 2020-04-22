@@ -20,9 +20,9 @@ public class Triangle extends Polygon {
     /**
      * Constructor based on the three points.
      *
-     * @param First_point   Point3D
-     * @param Second_point  Point3D
-     * @param Third_point Point3D
+     * @param First_point   - Point on the triangle
+     * @param Second_point  - Point on the triangle
+     * @param Third_point - Point on the triangle
      */
     public Triangle(Point3D First_point, Point3D Second_point, Point3D Third_point) {
         super(First_point, Second_point, Third_point);

@@ -34,9 +34,9 @@ public class Plane implements Geometry {
     /**
      * Constructor based on three 3D points
      *
-     * @param firstPoint   Point3D
-     * @param secondPoint   Point3D
-     * @param thirdPoint Point3D
+     * @param firstPoint   - Point on the plane
+     * @param secondPoint   - Point on the plane
+     * @param thirdPoint - Point on the plane
      */
     public Plane(Point3D firstPoint, Point3D secondPoint, Point3D thirdPoint) {
         _point = firstPoint;
