@@ -46,7 +46,7 @@ public class Point3D {
      *
      * @param point
      */
-    Point3D(final Point3D point) {
+    public Point3D(final Point3D point) {
         _x = point.getX();
         _y = point.getY();
         _z = point.getZ();

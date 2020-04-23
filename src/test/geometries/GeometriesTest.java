@@ -20,7 +20,7 @@ import static org.junit.Assert.assertNull;
 public class GeometriesTest {
 
     /**
-     * Method: findIntersections(Ray ray)
+     * Test method for {@link Geometries#findIntersections(Ray)}
      */
     @Test
     public void testFindIntersections() {
