@@ -45,24 +45,31 @@ public class TriangleTest {
         // ============ Equivalence Partitions Tests ==============
 
         // TC01: Ray's line intersects inside Triangle (1 points)
-        assertEquals("Ray intersects triangle - should return one point", List.of(new Point3D(0, 0, 0.5)), tri.findIntersections((new Ray(new Point3D(0, 2, 0.5), new Vector(0, -1, 0)))));
+        assertEquals("Ray intersects triangle - should return one point",
+                List.of(new Point3D(0, 0, 0.5)),
+                tri.findIntersections((new Ray(new Point3D(0, 2, 0.5), new Vector(0, -1, 0)))));
 
         // TC02: Ray's line intersects inside Triangle against edge (0 points)
-        assertEquals("Ray intersects triangle against edge - should return null", null, tri.findIntersections((new Ray(new Point3D(0.5, -2, -1), new Vector(0, 1, 0)))));
+        assertEquals("Ray intersects triangle against edge - should return null", null,
+                tri.findIntersections((new Ray(new Point3D(0.5, -2, -1), new Vector(0, 1, 0)))));
 
         // TC03: Ray's line intersects inside Triangle against vertex (0 points)
-        assertEquals("Ray intersects triangle against vertex - should return null", null, tri.findIntersections((new Ray(new Point3D(1.5, -2, -0.2), new Vector(0, 1, 0)))));
+        assertEquals("Ray intersects triangle against vertex - should return null", null,
+                tri.findIntersections((new Ray(new Point3D(1.5, -2, -0.2), new Vector(0, 1, 0)))));
 
         // =============== Boundary Values Tests ==================
 
         // TC04: Ray's line intersects Triangle's edge  (0 points)
-        assertEquals("Ray's line intersects Triangle's edge - should return null", null, tri.findIntersections((new Ray(new Point3D(0.5, -2, 0), new Vector(0, 1, 0)))));
+        assertEquals("Ray's line intersects Triangle's edge - should return null", null,
+                tri.findIntersections((new Ray(new Point3D(0.5, -2, 0), new Vector(0, 1, 0)))));
 
         // TC05: Ray's line intersects Triangle's vertex  (0 points)
-        assertEquals("Ray's line intersects Triangle's vertex - should return null", null, tri.findIntersections((new Ray(new Point3D(1, -1, 0), new Vector(0, 1, 0)))));
+        assertEquals("Ray's line intersects Triangle's vertex - should return null", null,
+                tri.findIntersections((new Ray(new Point3D(1, -1, 0), new Vector(0, 1, 0)))));
 
         // TC06: Ray's line intersects Triangle's edge outside Triangle  (0 points)
-        assertEquals("Ray's line intersects Triangle's outside Triangle - should return null", null, tri.findIntersections((new Ray(new Point3D(2, -2, 0), new Vector(0, 1, 0)))));
+        assertEquals("Ray's line intersects Triangle's outside Triangle - should return null", null,
+                tri.findIntersections((new Ray(new Point3D(2, -2, 0), new Vector(0, 1, 0)))));
     }
 
 } 

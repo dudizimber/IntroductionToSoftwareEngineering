@@ -30,7 +30,8 @@ public class PlaneTest {
         Point3D c = new Point3D(5, 7, 8);
         Plane plane = new Plane(a, b, c);
         Vector normal = new Vector(2.0 / 3, 1.0 / 3, -2.0 / 3);
-        assertTrue("Error: Plane getNormal not returning correct value", normal.equals(plane.getNormal(null)));
+        assertTrue("Error: Plane getNormal not returning correct value",
+                normal.equals(plane.getNormal(null)));
     }
 
 
@@ -65,34 +66,41 @@ public class PlaneTest {
 
         // TC03: Ray's parallel to Plane - included (0 points)
 
-        assertNull("Parallel ray included in plane - should return null", plane.findIntersections(new Ray(new Point3D(7, 8, 0), new Vector(9, 1, 0)))
+        assertNull("Parallel ray included in plane - should return null",
+                plane.findIntersections(new Ray(new Point3D(7, 8, 0), new Vector(9, 1, 0)))
         );
 
 
         // TC04: Ray's parallel to Plane - not included (0 points)
-        assertNull("Parallel ray not included in plane - should return null", plane.findIntersections(new Ray(new Point3D(1, 1, -3), new Vector(0, 1, 0)))
+        assertNull("Parallel ray not included in plane - should return null",
+                plane.findIntersections(new Ray(new Point3D(1, 1, -3), new Vector(0, 1, 0)))
         );
 
 
         // TC05: Ray's orthogonal to Plane - before (1 points)
-        assertEquals("Orthogonal ray starts before plane - should return one intersection", List.of(new Point3D(1, 1, 0)),
+        assertEquals("Orthogonal ray starts before plane - should return one intersection",
+                List.of(new Point3D(1, 1, 0)),
                 plane.findIntersections(new Ray(new Point3D(1, 1, -3), new Vector(0, 0, 9.5)))
         );
 
         // TC06: Ray's orthogonal to Plane - in (0 points)
-        assertNull("Orthogonal ray starts in plane - should return null", plane.findIntersections(new Ray(new Point3D(8, 17, 0), new Vector(0, 0, 1)))
+        assertNull("Orthogonal ray starts in plane - should return null",
+                plane.findIntersections(new Ray(new Point3D(8, 17, 0), new Vector(0, 0, 1)))
         );
 
         // TC07: Ray's orthogonal to Plane - after (0 points)
-        assertNull("Orthogonal ray starts after plane - should return null", plane.findIntersections(new Ray(new Point3D(17, 17, 19), new Vector(0, 0, 21)))
+        assertNull("Orthogonal ray starts after plane - should return null",
+                plane.findIntersections(new Ray(new Point3D(17, 17, 19), new Vector(0, 0, 21)))
         );
 
         // TC08: Ray starts in Plane but not orthogonal nor parallel (0 points)
-        assertNull("Ray (not orthogonal nor parallel) starts in plane - should return null", plane.findIntersections(new Ray(new Point3D(17, 13, 0), new Vector(-2, -7, 19))));
+        assertNull("Ray (not orthogonal nor parallel) starts in plane - should return null",
+                plane.findIntersections(new Ray(new Point3D(17, 13, 0), new Vector(-2, -7, 19))));
 
 
         // TC09: Ray starts in Plane Q Point but not orthogonal nor parallel (0 points)
-        assertNull("Ray (not orthogonal nor parallel) starts in Q Point of plane - should return null", plane.findIntersections(new Ray(new Point3D(1, 0, 0), new Vector(-2, -7, 19)))
+        assertNull("Ray (not orthogonal nor parallel) starts in Q Point of plane - should return null",
+                plane.findIntersections(new Ray(new Point3D(1, 0, 0), new Vector(-2, -7, 19)))
         );
     }
 } 
