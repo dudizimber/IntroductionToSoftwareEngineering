@@ -4,6 +4,8 @@ import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
 
+import static primitives.Util.isZero;
+
 /**
  * The type Camera.
  *
@@ -80,10 +82,47 @@ public class Camera {
 
     /***** FUNCTIONS *******/
 
+    /**
+     * Constructs Ray through a single pixel of the screen
+     *
+     * @param nX             Number of pixels in X axis
+     * @param nY             Number of pixels in Y axis
+     * @param j              The current pixel in Y axis
+     * @param i              The current pixel in X axis
+     * @param screenDistance Distance from camera to screen
+     * @param screenWidth    Screen width
+     * @param screenHeight   Screen height
+     * @return the generated ray
+     * @throws IllegalArgumentException if distance to screen is zero
+     */
     public Ray constructRayThroughPixel(int nX, int nY,
                                         int j, int i, double screenDistance,
                                         double screenWidth, double screenHeight) {
-        return null;
+        if (isZero(screenDistance)) {
+            throw new IllegalArgumentException("Distance to screen cannot be zero");
+        }
+
+        Point3D pc = _p0.add(_vectorTowards.scale(screenDistance));
+
+        double ry = screenHeight / nY;
+        double rx = screenWidth / nX;
+
+        double yi = ((i - nY / 2d) * ry + ry / 2d);
+        double xj = ((j - nX / 2d) * rx + rx / 2d);
+
+        Point3D pij = pc;
+
+        if (!isZero(xj)) {
+            pij = pij.add(_vectorRight.scale(xj));
+        }
+        if (!isZero(yi)) {
+            pij = pij.add(_vectorUp.scale(-yi));
+        }
+
+        Vector vij = pij.subtract(_p0);
+
+        return new Ray(_p0, vij);
+
     }
 
 
