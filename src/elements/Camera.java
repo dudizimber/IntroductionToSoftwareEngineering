@@ -31,7 +31,7 @@ public class Camera {
      */
     public Camera(Point3D _p0, Vector _vectorTowards, Vector _vectorUp) {
 
-        if (isZero(_vectorTowards.dotProduct(_vectorUp)))
+        if (!isZero(_vectorTowards.dotProduct(_vectorUp)))
             throw new IllegalArgumentException("Vectors Up and Towards are not orthogonal");
 
         this._p0 = new Point3D(_p0);
