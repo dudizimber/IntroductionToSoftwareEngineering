@@ -3,7 +3,6 @@ package renderer;
 
 import elements.Camera;
 import geometries.Intersectables;
-import geometries.Intersectables.GeoPoint;
 import primitives.Color;
 import primitives.Point3D;
 import primitives.Ray;
@@ -41,25 +40,20 @@ public class Render {
         double distance = _scene.getDistance();
 
         // Number of pixels in the row of View Plane
-        int width = (int) _imageWriter.getWidth();
+        int nx = _imageWriter.getNx();
         // Number of pixels in the column of View Plane
-        int height = (int) _imageWriter.getHeight();
-
-        // Width of the image
-        int Nx = _imageWriter.getNx();
-        // Height the image
-        int Ny = _imageWriter.getNy();
+        int ny = _imageWriter.getNy();
 
         Ray ray;
-        for (int row = 0; row < Ny; row++) {
-            for (int column = 0; column < Nx; column++) {
-                ray = camera.constructRayThroughPixel(Nx, Ny, row, column, distance, width, height);
-                List<GeoPoint> intersectionPoints = geometries.findIntersections(ray);
+        for (int row = 0; row < ny; row++) {
+            for (int column = 0; column < nx; column++) {
+                ray = camera.constructRayThroughPixel(nx, ny, row, column, distance, _imageWriter.getWidth(), _imageWriter.getHeight());
+                List<Point3D> intersectionPoints = geometries.findIntersections(ray);
                 if (intersectionPoints == null) {
                     _imageWriter.writePixel(column, row, background);
                 } else {
                     Point3D closestPoint = getClosestPoint(intersectionPoints);
-                    _imageWriter.writePixel(column - 1, row - 1, calcColor(closestPoint));
+                    _imageWriter.writePixel(column, row, calcColor(closestPoint));
                 }
             }
         }
