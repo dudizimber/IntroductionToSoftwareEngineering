@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * // Class that represents every Geometry in 3D space
+ * Class that represents every Geometry in 3D space
  *
  * @author David Zimberknopf and Daniel Grunberger
  */
@@ -32,13 +32,13 @@ public class Geometries implements Intersectables {
     }
 
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
+    public List<GeoPoint> findIntersections(Ray ray) {
         if (_geometries.isEmpty()) return null;
 
-        List<Point3D> intersections = null;
+        List<GeoPoint> intersections = null;
 
         for (Intersectables geometry : _geometries) {
-            List<Point3D> geometryIntersections = geometry.findIntersections(ray);
+            List<GeoPoint> geometryIntersections = geometry.findIntersections(ray);
 
             if (geometryIntersections != null) {
                 if (intersections == null)

@@ -3,6 +3,7 @@ package renderer;
 
 import elements.Camera;
 import geometries.Intersectables;
+import geometries.Intersectables.GeoPoint;
 import primitives.Color;
 import primitives.Point3D;
 import primitives.Ray;
@@ -53,7 +54,7 @@ public class Render {
         for (int row = 0; row < Ny; row++) {
             for (int column = 0; column < Nx; column++) {
                 ray = camera.constructRayThroughPixel(Nx, Ny, row, column, distance, width, height);
-                List<Point3D> intersectionPoints = geometries.findIntersections(ray);
+                List<GeoPoint> intersectionPoints = geometries.findIntersections(ray);
                 if (intersectionPoints == null) {
                     _imageWriter.writePixel(column, row, background);
                 } else {
@@ -70,15 +71,15 @@ public class Render {
      * @param intersectionPoints list of points from which should get the closest one
      * @return the closest point to the camera
      */
-    private Point3D getClosestPoint(List<Point3D> intersectionPoints) {
+    private Point3D getClosestPoint(List<GeoPoint> intersectionPoints) {
         Point3D result = null;
         double min = Double.MAX_VALUE;
         Point3D p0 = this._scene.getCamera().getP0();
-        for (Point3D pt : intersectionPoints) {
-            double distance = p0.distance(pt);
+        for (GeoPoint pt : intersectionPoints) {
+            double distance = p0.distance(pt.point);
             if (distance < min) {
                 min = distance;
-                result = pt;
+                result = pt.point;
             }
         }
         return result;

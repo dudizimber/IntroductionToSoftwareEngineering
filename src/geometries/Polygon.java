@@ -11,10 +11,10 @@ import static primitives.Util.isZero;
 /**
  * Polygon class represents two-dimensional polygon in 3D Cartesian coordinate
  * system
- * 
+ *
  * @author Dan
  */
-public class Polygon implements Geometry {
+public class Polygon extends Geometry {
     /**
      * List of polygon's vertices
      */
@@ -90,7 +90,7 @@ public class Polygon implements Geometry {
      * @param ray The ray to intersect
      * @return List of the intersections - 3D points
      */
-    public List<Point3D> findIntersections(Ray ray) {
+    public List<GeoPoint> findIntersections(Ray ray) {
         return null;
     }
 

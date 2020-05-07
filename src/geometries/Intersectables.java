@@ -18,5 +18,37 @@ public interface Intersectables {
      * @param ray The Ray to intersect
      * @return List of intersection points
      */
-    List<Point3D> findIntersections(Ray ray);
+    List<GeoPoint> findIntersections(Ray ray);
+
+    /**
+     * This class represents a point in an Intersectable Object
+     */
+    class GeoPoint {
+        public Geometry geometry;
+        public Point3D point;
+
+        /**
+         * Instantiates a new GeoPoint with a Geometry and a Point
+         *
+         * @param geometry the geometry of the point
+         * @param point    the point in the geometry
+         */
+        public GeoPoint(Geometry geometry, Point3D point) {
+            this.geometry = geometry;
+            this.point = point;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj)
+                return true;
+            if (obj == null) return false;
+            if (!(obj instanceof GeoPoint))
+                return false;
+            GeoPoint geoPoint = (GeoPoint) obj;
+            return this.point.equals(geoPoint.point) && this.geometry.equals(geoPoint.geometry);
+        }
+
+    }
+
 }

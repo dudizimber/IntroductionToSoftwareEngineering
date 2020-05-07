@@ -6,7 +6,7 @@ package geometries;
  *
  * @author David Zimberknopf and Daniel Grunberger
  */
-abstract class RadialGeometry implements Geometry {
+abstract class RadialGeometry extends Geometry {
     protected double _radius;
 
     /****** CONSTRUCTORS *******/

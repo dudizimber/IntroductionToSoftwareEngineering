@@ -1,6 +1,7 @@
 package test.elements;
 
 import elements.Camera;
+import geometries.Intersectables.GeoPoint;
 import geometries.Plane;
 import geometries.Sphere;
 import geometries.Triangle;
@@ -29,7 +30,7 @@ public class CameraIntegrationTest {
             new Vector(0, 0, 1),
             new Vector(0, -1, 0)
     );
-    List<Point3D> results;
+    List<GeoPoint> results;
     int count = 0, Nx = 3, Ny = 3;
 
     /**
