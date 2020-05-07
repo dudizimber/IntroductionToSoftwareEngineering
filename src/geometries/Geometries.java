@@ -1,6 +1,5 @@
 package geometries;
 
-import primitives.Point3D;
 import primitives.Ray;
 
 import java.util.ArrayList;
@@ -42,7 +41,7 @@ public class Geometries implements Intersectables {
 
             if (geometryIntersections != null) {
                 if (intersections == null)
-                    intersections = new ArrayList<Point3D>();
+                    intersections = new ArrayList<GeoPoint>();
                 intersections.addAll(geometryIntersections);
             }
         }

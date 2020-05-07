@@ -3,6 +3,7 @@ package renderer;
 
 import elements.Camera;
 import geometries.Intersectables;
+import geometries.Intersectables.GeoPoint;
 import primitives.Color;
 import primitives.Point3D;
 import primitives.Ray;
@@ -48,7 +49,7 @@ public class Render {
         for (int row = 0; row < ny; row++) {
             for (int column = 0; column < nx; column++) {
                 ray = camera.constructRayThroughPixel(nx, ny, row, column, distance, _imageWriter.getWidth(), _imageWriter.getHeight());
-                List<Point3D> intersectionPoints = geometries.findIntersections(ray);
+                List<GeoPoint> intersectionPoints = geometries.findIntersections(ray);
                 if (intersectionPoints == null) {
                     _imageWriter.writePixel(column, row, background);
                 } else {
