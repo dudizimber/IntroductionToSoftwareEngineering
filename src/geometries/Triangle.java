@@ -1,8 +1,6 @@
 package geometries;
 
-import primitives.Point3D;
-import primitives.Ray;
-import primitives.Vector;
+import primitives.*;
 
 import java.util.List;
 
@@ -20,12 +18,24 @@ public class Triangle extends Polygon {
     /**
      * Constructor based on the three points.
      *
-     * @param First_point   - Point on the triangle
-     * @param Second_point  - Point on the triangle
-     * @param Third_point - Point on the triangle
+     * @param color       Triangle's color
+     * @param firstPoint  - Point on the triangle
+     * @param secondPoint - Point on the triangle
+     * @param thirdPoint  - Point on the triangle
      */
-    public Triangle(Point3D First_point, Point3D Second_point, Point3D Third_point) {
-        super(First_point, Second_point, Third_point);
+    public Triangle(Color color, Material material, Point3D firstPoint, Point3D secondPoint, Point3D thirdPoint) {
+        super(color, material, firstPoint, secondPoint, thirdPoint);
+    }
+
+    /**
+     * Constructor based on the three points, passing black as default color
+     *
+     * @param firstPoint  - Point on the triangle
+     * @param secondPoint - Point on the triangle
+     * @param thirdPoint  - Point on the triangle
+     */
+    public Triangle(Point3D firstPoint, Point3D secondPoint, Point3D thirdPoint) {
+        this(Color.BLACK, Material.DEFAULT, firstPoint, secondPoint, thirdPoint);
     }
 
     /****** FUNCTIONS *******/

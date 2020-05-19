@@ -1,8 +1,6 @@
 package geometries;
 
-import primitives.Point3D;
-import primitives.Ray;
-import primitives.Vector;
+import primitives.*;
 
 /**
  * This class represents a cylinder in 3D space, which is a Tube with finite height
@@ -19,9 +17,18 @@ public class Cylinder extends Tube {
      * @param radius  radius of cilynder
      * @param axisRay ray of of cilynder
      */
-    Cylinder(double height, double radius, Ray axisRay) {
-        super(axisRay, radius);
+    Cylinder(Color color, Material material, double height, double radius, Ray axisRay) {
+        super(color, material, axisRay, radius);
         _height = height;
+    }
+
+    /**
+     * @param height  height of cilynder
+     * @param radius  radius of cilynder
+     * @param axisRay ray of of cilynder
+     */
+    Cylinder(double height, double radius, Ray axisRay) {
+        this(Color.BLACK, Material.DEFAULT, height, radius, axisRay);
     }
 
     /****** GETTERS *******/

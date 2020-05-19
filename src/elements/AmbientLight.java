@@ -1,14 +1,14 @@
 package elements;
 
 import primitives.Color;
+import test.elements.Light;
 
 /**
  * Ambient Light
  *
  * @author David Zimberknopf & Daniel Grunberger
  */
-public class AmbientLight {
-    Color _intensity;
+public class AmbientLight extends Light {
 
     /**
      * Creates an Ambient Light using a Color and the coefficient
@@ -17,16 +17,7 @@ public class AmbientLight {
      * @param coefficient Attenuation coefficient
      */
     public AmbientLight(Color intensity, double coefficient) {
-        this._intensity = new Color(intensity).scale(coefficient);
-    }
-
-    /**
-     * Get for Intensity
-     *
-     * @return the java.awt.Color of the intensity of the Ambient Light
-     */
-    public Color getIntensity() {
-        return _intensity;
+        super(new Color(intensity).scale(coefficient));
     }
 
 }

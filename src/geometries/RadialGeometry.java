@@ -1,5 +1,8 @@
 package geometries;
 
+import primitives.Color;
+import primitives.Material;
+
 /**
  * Radial Geometry class. Used in any Class with radius
  * property
@@ -12,11 +15,22 @@ abstract class RadialGeometry extends Geometry {
     /****** CONSTRUCTORS *******/
 
     /**
-     * Constructor base on double
+     * Constructor base on double, passing black as default color
      *
      * @param radius double
      */
     RadialGeometry(double radius) {
+        this(Color.BLACK, Material.DEFAULT, radius);
+    }
+
+    /**
+     * Constructor base on double and color
+     *
+     * @param color  color of the geometry
+     * @param radius double
+     */
+    RadialGeometry(Color color, Material material, double radius) {
+        super(color, material);
         _radius = radius;
     }
 

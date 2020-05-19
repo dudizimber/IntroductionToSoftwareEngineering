@@ -1,8 +1,6 @@
 package geometries;
 
-import primitives.Point3D;
-import primitives.Ray;
-import primitives.Vector;
+import primitives.*;
 
 import java.util.List;
 
@@ -25,9 +23,19 @@ public class Polygon extends Geometry {
     protected Plane _plane;
 
     /**
+     * Calls the Polygon with Color constructor, passing default black color
+     *
+     * @param vertices list of vertices according to their order by edge path
+     */
+    public Polygon(Point3D... vertices) {
+        this(Color.BLACK, Material.DEFAULT, vertices);
+    }
+
+    /**
      * Polygon constructor based on vertices list. The list must be ordered by edge
      * path. The polygon must be convex.
      *
+     * @param color    Color of the polygon
      * @param vertices list of vertices according to their order by edge path
      * @throws IllegalArgumentException in any case of illegal combination of
      *                                  vertices:
@@ -45,7 +53,8 @@ public class Polygon extends Geometry {
      *                                  <li>The polygon is concave (not convex></li>
      *                                  </ul>
      */
-    public Polygon(Point3D... vertices) {
+    public Polygon(Color color, Material material, Point3D... vertices) {
+        super(color, material);
         if (vertices.length < 3)
             throw new IllegalArgumentException("A polygon can't have less than 3 vertices");
         _vertices = List.of(vertices);

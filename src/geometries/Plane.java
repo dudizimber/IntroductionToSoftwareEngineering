@@ -1,8 +1,6 @@
 package geometries;
 
-import primitives.Point3D;
-import primitives.Ray;
-import primitives.Vector;
+import primitives.*;
 
 import java.util.List;
 
@@ -21,12 +19,35 @@ public class Plane extends Geometry {
     /****** CONSTRUCTORS *******/
 
     /**
-     * Constructor based on a point and the normal
+     * Constructor based on a point and the normal, default color is black
      *
      * @param point  Point3D
      * @param normal Vector
      */
     public Plane(Point3D point, Vector normal) {
+        this(Color.BLACK, Material.DEFAULT, point, normal);
+    }
+
+    /**
+     * Constructor based on three 3D points, default color is black
+     *
+     * @param firstPoint  - Point on the plane
+     * @param secondPoint - Point on the plane
+     * @param thirdPoint  - Point on the plane
+     */
+    public Plane(Point3D firstPoint, Point3D secondPoint, Point3D thirdPoint) {
+        this(Color.BLACK, Material.DEFAULT, firstPoint, secondPoint, thirdPoint);
+    }
+
+    /**
+     * Constructor based on a point and the normal
+     *
+     * @param color  - Color of the plane
+     * @param point  Point3D
+     * @param normal Vector
+     */
+    public Plane(Color color, Material material, Point3D point, Vector normal) {
+        super(color, material);
         _point = point;
         _normal = normal;
     }
@@ -34,17 +55,17 @@ public class Plane extends Geometry {
     /**
      * Constructor based on three 3D points
      *
+     * @param color - Color of the plane
      * @param firstPoint   - Point on the plane
      * @param secondPoint   - Point on the plane
      * @param thirdPoint - Point on the plane
      */
-    public Plane(Point3D firstPoint, Point3D secondPoint, Point3D thirdPoint) {
+    public Plane(Color color, Material material, Point3D firstPoint, Point3D secondPoint, Point3D thirdPoint) {
+        super(color, material);
         _point = firstPoint;
-
         Vector a = secondPoint.subtract(firstPoint);
         Vector b = thirdPoint.subtract(firstPoint);
         _normal = a.crossProduct(b).normalize();
-
     }
 
     /****** GETTERS *******/

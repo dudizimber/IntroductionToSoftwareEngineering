@@ -2,9 +2,13 @@ package scene;
 
 import elements.AmbientLight;
 import elements.Camera;
+import elements.LightSource;
 import geometries.Geometries;
 import geometries.Intersectables;
 import primitives.Color;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * The Scene itself
@@ -18,6 +22,7 @@ public class Scene {
     private AmbientLight _ambientLight;
     private Camera _camera;
     private double _distance;
+    private List<LightSource> _lights;
 
     /**
      * Creates an empty scene with the specified name
@@ -27,6 +32,27 @@ public class Scene {
     public Scene(String _sceneName) {
         this._name = _sceneName;
         this._geometries = new Geometries();
+        this._lights = new LinkedList<LightSource>();
+    }
+
+    /**
+     * Add Light sources to the scene
+     *
+     * @param lights list of lights to add
+     */
+    public void addLights(LightSource... lights) {
+        for (LightSource light : lights) {
+            this._lights.add(light);
+        }
+    }
+
+    /**
+     * Get the lights in the scene
+     *
+     * @return list of the lights
+     */
+    public List<LightSource> getLights() {
+        return _lights;
     }
 
     /**

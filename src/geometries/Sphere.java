@@ -1,8 +1,6 @@
 package geometries;
 
-import primitives.Point3D;
-import primitives.Ray;
-import primitives.Vector;
+import primitives.*;
 
 import java.util.List;
 
@@ -21,12 +19,23 @@ public class Sphere extends RadialGeometry {
     /**
      * Constructor based on center point and radius
      *
-     * @param center - center of sphere
-     * @param radius -radius of sphere
+     * @param color  color of the sphere
+     * @param center center of sphere
+     * @param radius radius of sphere
+     */
+    public Sphere(Color color, Material material, Point3D center, double radius) {
+        super(color, material, radius);
+        _center = center;
+    }
+
+    /**
+     * Constructor based on center point and radius, using black as default color
+     *
+     * @param center center of sphere
+     * @param radius radius of sphere
      */
     public Sphere(Point3D center, double radius) {
-        super(radius);
-        _center = center;
+        this(Color.BLACK, Material.DEFAULT, center, radius);
     }
 
     /****** GETTERS *******/

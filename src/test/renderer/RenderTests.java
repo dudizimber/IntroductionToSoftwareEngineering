@@ -1,4 +1,4 @@
-package unittests;
+package test.renderer;
 
 import elements.AmbientLight;
 import elements.Camera;
@@ -6,6 +6,7 @@ import geometries.Sphere;
 import geometries.Triangle;
 import org.junit.Test;
 import primitives.Color;
+import primitives.Material;
 import primitives.Point3D;
 import primitives.Vector;
 import renderer.ImageWriter;
@@ -59,12 +60,15 @@ public class RenderTests {
 
         scene.addGeometries(
                 new Triangle(new Color(java.awt.Color.BLUE),
+                        new Material(0.8, 0.2, 300),
                         new Point3D(100, 0, 100), new Point3D(0, 100, 100), new Point3D(100, 100, 100)),      // lower right
                 new Triangle(
                         new Point3D(100, 0, 100), new Point3D(0, -100, 100), new Point3D(100, -100, 100)),    // upper right
                 new Triangle(new Color(java.awt.Color.RED),
+                        new Material(0.8, 0.2, 300),
                         new Point3D(-100, 0, 100), new Point3D(0, 100, 100), new Point3D(-100, 100, 100)),    // lower left
                 new Triangle(new Color(java.awt.Color.GREEN),
+                        new Material(0.8, 0.2, 300),
                         new Point3D(-100, 0, 100), new Point3D(0, -100, 100), new Point3D(-100, -100, 100))); // upper left
 
         ImageWriter imageWriter = new ImageWriter("color render test", 500, 500, 500, 500);

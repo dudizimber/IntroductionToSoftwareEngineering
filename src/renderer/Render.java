@@ -2,14 +2,15 @@ package renderer;
 
 
 import elements.Camera;
+import elements.LightSource;
 import geometries.Intersectables;
 import geometries.Intersectables.GeoPoint;
-import primitives.Color;
-import primitives.Point3D;
-import primitives.Ray;
+import primitives.*;
 import scene.Scene;
 
 import java.util.List;
+
+import static primitives.Util.alignZero;
 
 /**
  * The renderer
@@ -35,7 +36,7 @@ public class Render {
      * Renders the image.
      */
     public void renderImage() {
-        java.awt.Color background = _scene.getBackground().getColor();
+        Color background = _scene.getBackground();
         Camera camera = _scene.getCamera();
         Intersectables geometries = _scene.getGeometries();
         double distance = _scene.getDistance();
@@ -53,7 +54,7 @@ public class Render {
                 if (intersectionPoints == null) {
                     _imageWriter.writePixel(column, row, background);
                 } else {
-                    Point3D closestPoint = getClosestPoint(intersectionPoints);
+                    GeoPoint closestPoint = getClosestPoint(intersectionPoints);
                     _imageWriter.writePixel(column, row, calcColor(closestPoint));
                 }
             }
@@ -66,15 +67,15 @@ public class Render {
      * @param intersectionPoints list of points from which should get the closest one
      * @return the closest point to the camera
      */
-    private Point3D getClosestPoint(List<GeoPoint> intersectionPoints) {
-        Point3D result = null;
+    private GeoPoint getClosestPoint(List<GeoPoint> intersectionPoints) {
+        GeoPoint result = null;
         double min = Double.MAX_VALUE;
         Point3D p0 = this._scene.getCamera().getP0();
         for (GeoPoint pt : intersectionPoints) {
             double distance = p0.distance(pt.point);
             if (distance < min) {
                 min = distance;
-                result = pt.point;
+                result = pt;
             }
         }
         return result;
@@ -92,7 +93,7 @@ public class Render {
         for (int col = 0; col < columns; col++)
             for (int row = 0; row < rows; row++)
                 if (col % interval == 0 || row % interval == 0)
-                    _imageWriter.writePixel(row, col, color.getColor());
+                    _imageWriter.writePixel(row, col, color);
 
     }
 
@@ -106,12 +107,56 @@ public class Render {
     /**
      * Calculate the color intensity in a point
      *
-     * @param point the point for which the color is required
+     * @param geopoint the point for which the color is required
      * @return the color intensity
      */
-    private java.awt.Color calcColor(Point3D point) {
-        return _scene.getAmbientLight().getIntensity().getColor();
+    private Color calcColor(GeoPoint geopoint) {
+        Color result = _scene.getAmbientLight().getIntensity();
+        result = result.add(geopoint.getGeometry().getEmission());
+        List<LightSource> lights = _scene.getLights();
+
+        Vector v = geopoint.getPoint().subtract(_scene.getCamera().getP0()).normalize();
+        Vector n = geopoint.getGeometry().getNormal(geopoint.getPoint());
+
+        Material material = geopoint.getGeometry().getMaterial();
+        int nShininess = material.getNShininess();
+        double kd = material.getKD();
+        double ks = material.getKS();
+
+        if (lights != null)
+            for (LightSource lightSource : lights) {
+                Vector l = lightSource.getL(geopoint.getPoint());
+                double nl = alignZero(n.dotProduct(l));
+                double nv = alignZero(n.dotProduct(v));
+                if (sign(nl) == sign(nv)) {
+                    Color ip = lightSource.getIntensity(geopoint.getPoint());
+                    result = result.add(
+                            calcDiffusive(kd, nl, ip),
+                            calcSpecular(ks, l, n, nl, v, nShininess, ip)
+                    );
+                }
+            }
+
+        return result;
     }
 
+    private boolean sign(double value) {
+        return value > 0d;
+    }
+
+    private Color calcDiffusive(double kd, double nl, Color ip) {
+        if (nl < 0) nl = -1 * nl;
+        return ip.scale(nl * kd);
+    }
+
+    private Color calcSpecular(double ks, Vector l, Vector n, double nl, Vector v, int nShininess, Color ip) {
+        double p = nShininess;
+        Vector r = l.add(n.scale(-2 * nl));
+        double minusVr = -alignZero(r.dotProduct(v));
+        if (minusVr <= 0) {
+            return Color.BLACK;
+        }
+        return ip.scale(ks * Math.pow(minusVr, p));
+    }
 
 }

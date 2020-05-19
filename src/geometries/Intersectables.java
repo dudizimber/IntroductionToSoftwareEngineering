@@ -20,6 +20,14 @@ public interface Intersectables {
      */
     List<GeoPoint> findIntersections(Ray ray);
 
+    /*
+     default List<GeoPoint> findIntersections(Ray ray) {
+        return findIntersections(ray, Double.POSITIVE_INFINITY);
+    };
+
+    List<GeoPoint> findIntersections(Ray ray, double maxD);
+     */
+
     /**
      * This class represents a point in an Intersectable Object
      */
@@ -36,6 +44,14 @@ public interface Intersectables {
         public GeoPoint(Geometry geometry, Point3D point) {
             this.geometry = geometry;
             this.point = point;
+        }
+
+        public Geometry getGeometry() {
+            return geometry;
+        }
+
+        public Point3D getPoint() {
+            return point;
         }
 
         @Override
