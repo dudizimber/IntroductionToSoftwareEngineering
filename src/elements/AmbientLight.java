@@ -16,8 +16,6 @@ public class AmbientLight extends Light {
      * @param intensity   The Color of the Ambient Light
      * @param coefficient Attenuation coefficient
      */
-    public AmbientLight(Color intensity, double coefficient) {
-        super(new Color(intensity).scale(coefficient));
-    }
+    public AmbientLight(Color intensity, double coefficient){ super(new Color(intensity).scale(coefficient));}
 
 }

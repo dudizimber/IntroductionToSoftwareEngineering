@@ -3,6 +3,7 @@ package renderer;
 
 import elements.Camera;
 import elements.LightSource;
+import elements.AmbientLight;
 import geometries.Intersectables;
 import geometries.Intersectables.GeoPoint;
 import primitives.*;
@@ -40,7 +41,7 @@ public class Render {
         Camera camera = _scene.getCamera();
         Intersectables geometries = _scene.getGeometries();
         double distance = _scene.getDistance();
-
+        AmbientLight ambientLight = _scene.getAmbientLight();
         // Number of pixels in the row of View Plane
         int nx = _imageWriter.getNx();
         // Number of pixels in the column of View Plane
@@ -49,7 +50,7 @@ public class Render {
         Ray ray;
         for (int row = 0; row < ny; row++) {
             for (int column = 0; column < nx; column++) {
-                ray = camera.constructRayThroughPixel(nx, ny, row, column, distance, _imageWriter.getWidth(), _imageWriter.getHeight());
+                ray = camera.constructRayThroughPixel(nx, ny, column, row, distance, _imageWriter.getWidth(), _imageWriter.getHeight());
                 List<GeoPoint> intersectionPoints = geometries.findIntersections(ray);
                 if (intersectionPoints == null) {
                     _imageWriter.writePixel(column, row, background);
