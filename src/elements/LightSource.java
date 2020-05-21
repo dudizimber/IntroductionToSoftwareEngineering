@@ -10,4 +10,5 @@ public interface LightSource {
 
     Vector getL(Point3D p);
 
+    double getDistance(Point3D p);
 }

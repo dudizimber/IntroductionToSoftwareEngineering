@@ -47,8 +47,8 @@ public class Triangle extends Polygon {
      * @param ray The ray to intersect
      * @return List of the intersections - 3D points
      */
-    public List<GeoPoint> findIntersections(Ray ray) {
-        return super.findIntersections(ray);
+    public List<GeoPoint> findIntersections(Ray ray, double maxDistance) {
+        return super.findIntersections(ray, maxDistance);
     }
 
     @Override

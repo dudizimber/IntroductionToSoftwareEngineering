@@ -31,13 +31,13 @@ public class Geometries implements Intersectables {
     }
 
     @Override
-    public List<GeoPoint> findIntersections(Ray ray) {
+    public List<GeoPoint> findIntersections(Ray ray, double maxDistance) {
         if (_geometries.isEmpty()) return null;
 
         List<GeoPoint> intersections = null;
 
         for (Intersectables geometry : _geometries) {
-            List<GeoPoint> geometryIntersections = geometry.findIntersections(ray);
+            List<GeoPoint> geometryIntersections = geometry.findIntersections(ray, maxDistance);
 
             if (geometryIntersections != null) {
                 if (intersections == null)

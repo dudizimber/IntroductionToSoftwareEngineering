@@ -1,9 +1,9 @@
 package renderer;
 
 
+import elements.AmbientLight;
 import elements.Camera;
 import elements.LightSource;
-import elements.AmbientLight;
 import geometries.Intersectables;
 import geometries.Intersectables.GeoPoint;
 import primitives.*;
@@ -21,6 +21,8 @@ import static primitives.Util.alignZero;
 public class Render {
     private Scene _scene;
     private ImageWriter _imageWriter;
+
+    private static final double DELTA = 0.1;
 
     /**
      * Instantiates a new Render.
@@ -129,12 +131,14 @@ public class Render {
                 Vector l = lightSource.getL(geopoint.getPoint());
                 double nl = alignZero(n.dotProduct(l));
                 double nv = alignZero(n.dotProduct(v));
-                if (sign(nl) == sign(nv)) {
-                    Color ip = lightSource.getIntensity(geopoint.getPoint());
-                    result = result.add(
-                            calcDiffusive(kd, nl, ip),
-                            calcSpecular(ks, l, n, nl, v, nShininess, ip)
-                    );
+                if (nl * nv > 0) {
+                    if (unshaded(lightSource, l, n, geopoint)) {
+                        Color ip = lightSource.getIntensity(geopoint.getPoint());
+                        result = result.add(
+                                calcDiffusive(kd, nl, ip),
+                                calcSpecular(ks, l, n, nl, v, nShininess, ip)
+                        );
+                    }
                 }
             }
 
@@ -158,6 +162,15 @@ public class Render {
             return Color.BLACK;
         }
         return ip.scale(ks * Math.pow(minusVr, p));
+    }
+
+    private boolean unshaded(LightSource light, Vector l, Vector n, GeoPoint geopoint) {
+        Vector lightDirection = l.scale(-1); // from point to light source
+        Vector delta = n.scale(n.dotProduct(lightDirection) > 0 ? DELTA : -DELTA);
+        Point3D point = geopoint.point.add(delta);
+        Ray lightRay = new Ray(point, lightDirection);
+        List<GeoPoint> intersections = _scene.getGeometries().findIntersections(lightRay, light.getDistance(geopoint.point));
+        return intersections == null;
     }
 
 }

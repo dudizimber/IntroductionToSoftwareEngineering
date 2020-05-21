@@ -3,7 +3,6 @@ package elements;
 import primitives.Color;
 import primitives.Point3D;
 import primitives.Vector;
-import test.elements.Light;
 
 public class DirectionalLight extends Light implements LightSource {
     private Vector _direction;
@@ -38,5 +37,16 @@ public class DirectionalLight extends Light implements LightSource {
     @Override
     public Vector getL(Point3D p) {
         return _direction;
+    }
+
+    /**
+     * Returns distance from given point to light
+     *
+     * @param p the point to check
+     * @return the distance
+     */
+    @Override
+    public double getDistance(Point3D p) {
+        return Double.POSITIVE_INFINITY;
     }
 }

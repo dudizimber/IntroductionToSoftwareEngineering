@@ -3,7 +3,6 @@ package elements;
 import primitives.Color;
 import primitives.Point3D;
 import primitives.Vector;
-import test.elements.Light;
 
 public class PointLight extends Light implements LightSource {
     protected Point3D _position;
@@ -45,5 +44,16 @@ public class PointLight extends Light implements LightSource {
     public Vector getL(Point3D p) {
         if (p.equals(_position)) return null;
         return p.subtract(_position).normalize();
+    }
+
+    /**
+     * Returns distance from given point to light
+     *
+     * @param p the point to check
+     * @return the distance
+     */
+    @Override
+    public double getDistance(Point3D p) {
+        return this.getL(p).getPoint().distance(p);
     }
 }

@@ -1,7 +1,6 @@
 package elements;
 
 import primitives.Color;
-import test.elements.Light;
 
 /**
  * Ambient Light

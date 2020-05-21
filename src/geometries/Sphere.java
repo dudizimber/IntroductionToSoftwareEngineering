@@ -2,6 +2,7 @@ package geometries;
 
 import primitives.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static primitives.Util.alignZero;
@@ -60,7 +61,7 @@ public class Sphere extends RadialGeometry {
      * @param ray The ray to intersect
      * @return List of the intersections - 3D points
      */
-    public List<GeoPoint> findIntersections(Ray ray) {
+    public List<GeoPoint> findIntersections(Ray ray, double maxDistance) {
         Point3D p0 = ray.getPoint();
         Vector v = ray.getVector();
         Vector u;
@@ -81,12 +82,10 @@ public class Sphere extends RadialGeometry {
         double t1 = alignZero(tm - th);
         double t2 = alignZero(tm + th);
         if (t1 <= 0 && t2 <= 0) return null;
-        if (t1 > 0 && t2 > 0)
-            return List.of(new GeoPoint(this, ray.getPoint(t1)), new GeoPoint(this, ray.getPoint(t2))); //P1 , P2
-        if (t1 > 0)
-            return List.of(new GeoPoint(this, ray.getPoint(t1)));
-        else
-            return List.of(new GeoPoint(this, ray.getPoint(t2)));
+        List<GeoPoint> intersections = new ArrayList<GeoPoint>();
+        if (t1 > 0 && alignZero(t1 - maxDistance) <= 0) intersections.add(new GeoPoint(this, ray.getPoint(t1)));
+        if (t1 > 0 && alignZero(t1 - maxDistance) <= 0) intersections.add(new GeoPoint(this, ray.getPoint(t2)));
+        return intersections.isEmpty() ? null : intersections;
     }
 
     @Override

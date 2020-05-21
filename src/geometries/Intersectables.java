@@ -18,7 +18,18 @@ public interface Intersectables {
      * @param ray The Ray to intersect
      * @return List of intersection points
      */
-    List<GeoPoint> findIntersections(Ray ray);
+    default List<GeoPoint> findIntersections(Ray ray) {
+        return findIntersections(ray, Double.POSITIVE_INFINITY);
+    }
+
+    /**
+     * Find intersections of a Ray with the Object(s), passing the maximum distance
+     *
+     * @param ray         The Ray to intersect
+     * @param maxDistance Maximum distance for intersection
+     * @return List of intersection points
+     */
+    List<GeoPoint> findIntersections(Ray ray, double maxDistance);
 
     /*
      default List<GeoPoint> findIntersections(Ray ray) {
