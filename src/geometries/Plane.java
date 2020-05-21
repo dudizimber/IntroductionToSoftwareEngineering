@@ -49,7 +49,7 @@ public class Plane extends Geometry {
     public Plane(Color color, Material material, Point3D point, Vector normal) {
         super(color, material);
         _point = point;
-        _normal = normal;
+        _normal = normal.normalized();
     }
 
     /**
@@ -65,7 +65,7 @@ public class Plane extends Geometry {
         _point = firstPoint;
         Vector a = secondPoint.subtract(firstPoint);
         Vector b = thirdPoint.subtract(firstPoint);
-        _normal = a.crossProduct(b).normalize();
+        _normal = a.crossProduct(b).normalized();
     }
 
     /****** GETTERS *******/
