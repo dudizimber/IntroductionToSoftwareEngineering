@@ -1,6 +1,6 @@
 package test.geometries;
 
-import geometries.Geometries;
+import geometries.*;
 import geometries.Plane;
 import geometries.Sphere;
 import geometries.Triangle;
@@ -56,6 +56,5 @@ public class GeometriesTest {
         assertEquals("Wrong number of intersections - expected 2", 2, geometriesListOne.findIntersections(new Ray(new Point3D(1.0, 0.0, -1.0), new Vector(0.0, 0.0, 1.0))).size());
 
     }
+}
 
-
-} 
