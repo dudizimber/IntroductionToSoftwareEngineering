@@ -4,6 +4,10 @@ import primitives.Color;
 import primitives.Point3D;
 import primitives.Vector;
 
+/**
+ *
+ * Models a light source with its direction
+ */
 public class DirectionalLight extends Light implements LightSource {
     private Vector _direction;
 
@@ -14,7 +18,7 @@ public class DirectionalLight extends Light implements LightSource {
      */
     public DirectionalLight(Color color, Vector direction) {
         super(color);
-        this._direction = direction.normalize();
+        this._direction = direction.normalized();
     }
 
     /**

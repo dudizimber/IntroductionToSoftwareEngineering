@@ -4,6 +4,11 @@ import primitives.Color;
 import primitives.Point3D;
 import primitives.Vector;
 
+/**
+ * Represents a omni-directional point source
+ *
+ *
+ */
 public class PointLight extends Light implements LightSource {
     protected Point3D _position;
     protected double _kC, _kL, _kQ;
