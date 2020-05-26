@@ -3,7 +3,6 @@ package elements;
 import primitives.Color;
 import primitives.Point3D;
 import primitives.Vector;
-import test.elements.Light;
 
 public class PointLight extends Light implements LightSource {
     protected Point3D _position;

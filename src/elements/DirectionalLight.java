@@ -3,7 +3,6 @@ package elements;
 import primitives.Color;
 import primitives.Point3D;
 import primitives.Vector;
-import test.elements.Light;
 
 public class DirectionalLight extends Light implements LightSource {
     private Vector _direction;

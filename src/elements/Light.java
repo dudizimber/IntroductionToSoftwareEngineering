@@ -1,4 +1,4 @@
-package test.elements;
+package elements;
 
 import primitives.Color;
 
