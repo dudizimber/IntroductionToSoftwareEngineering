@@ -55,7 +55,7 @@ public class ShadowTests {
 		scene.addGeometries(new Sphere(new Color(java.awt.Color.BLUE), new Material(0.5, 0.5, 30), //
 				 new Point3D(0, 0, 200) , 60), //
 				new Triangle(new Color(java.awt.Color.BLUE), new Material(0.5, 0.5, 30), //
-						new Point3D(-70, 40, 0), new Point3D(-40, 70, 0), new Point3D(-68, 68, 4)));
+						new Point3D(-60,30, 10), new Point3D(-30,60, 10), new Point3D(-58,58, 22)));
 
 		scene.addLights(new SpotLight(new Color(400, 240, 0), //
 				 new Vector(1, -1, 3),new Point3D(-100, 100, -200), 1, 1E-5, 1.5E-7));
@@ -81,7 +81,7 @@ public class ShadowTests {
 		scene.addGeometries(new Sphere(new Color(java.awt.Color.BLUE), new Material(0.5, 0.5, 30), //
 				 new Point3D(0, 0, 200),60), //
 				new Triangle(new Color(java.awt.Color.BLUE), new Material(0.5, 0.5, 30), //
-						new Point3D(-70, 40, 0), new Point3D(-40, 70, 0), new Point3D(-68, 68, 4)));
+						new Point3D(-45, 15, 8), new Point3D(-15, 45, 8), new Point3D(-43, 43, 20)));
 
 		scene.addLights(new SpotLight(new Color(400, 240, 0), //
 				 new Vector(1, -1, 3),new Point3D(-100, 100, -200), 1, 1E-5, 1.5E-7));
@@ -107,7 +107,7 @@ public class ShadowTests {
 		scene.addGeometries(new Sphere(new Color(java.awt.Color.BLUE), new Material(0.5, 0.5, 30), //
 				 new Point3D(0, 0, 200) , 60), //
 				new Triangle(new Color(java.awt.Color.BLUE), new Material(0.5, 0.5, 30), //
-						new Point3D(-70, 40, 0), new Point3D(-40, 70, 0), new Point3D(-68, 68, 4)));
+						new Point3D(-65, 35, 7), new Point3D(-35, 65, 7), new Point3D(-63, 63, 65)));
 
 		scene.addLights(new SpotLight(new Color(400, 240, 0), //
 				 new Vector(1, -1, 3),new Point3D(-100, 100, -200), 1, 1E-5, 1.5E-7));
@@ -133,7 +133,7 @@ public class ShadowTests {
 		scene.addGeometries(new Sphere(new Color(java.awt.Color.BLUE), new Material(0.5, 0.5, 30), //
 				 new Point3D(0, 0, 200) , 60), //
 				new Triangle(new Color(java.awt.Color.BLUE), new Material(0.5, 0.5, 30), //
-						new Point3D(-70, 40, 0), new Point3D(-40, 70, 0), new Point3D(-68, 68, 4)));
+						new Point3D(-60, 30, 15), new Point3D(-30, 60, 15), new Point3D(-58, 58, 80)));
 
 		scene.addLights(new SpotLight(new Color(400, 240, 0), //
 				 new Vector(1, -1, 3),new Point3D(-100, 100, -200), 1, 1E-5, 1.5E-7));

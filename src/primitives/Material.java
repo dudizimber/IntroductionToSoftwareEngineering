@@ -2,7 +2,7 @@ package primitives;
 
 public class Material {
     public static Material DEFAULT = new Material(0, 0, 0);
-    private double _kD, _kS;
+    private double _kD, _kS, _kT, _kR;
     private int _nShininess;
 
     /**
@@ -13,19 +13,49 @@ public class Material {
      * @param _nShininess shininess coefficient
      */
     public Material(double _kD, double _kS, int _nShininess) {
+         this(_kD, _kS, _nShininess, 0, 0);
+    }
+
+    public Material(double _kD, double _kS, int _nShininess,double _kT,double  _kR){
         this._kD = _kD;
         this._kS = _kS;
         this._nShininess = _nShininess;
+        this._kT = _kT;
+        this._kR = _kR;
     }
 
-    public double getKD() {
+    /**
+     * Returs the kD coefficient
+     * @return
+     */
+    public double getkD() {
         return _kD;
     }
-
-    public double getKS() {
+    /**
+     *
+     * @return
+     */
+    public double getkT() {
+        return _kT;
+    }
+    /**
+     *Returs the kT coefficient
+     * @return
+     */
+    public double getkR() {
+        return _kR;
+    }
+    /**
+     *Returs the kR coefficient
+     * @return
+     */
+    public double getkS() {
         return _kS;
     }
-
+    /**
+     *Returs the kS coefficient
+     * @return
+     */
     public int getNShininess() {
         return _nShininess;
     }
