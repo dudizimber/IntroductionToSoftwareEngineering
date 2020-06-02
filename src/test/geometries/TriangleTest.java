@@ -45,7 +45,7 @@ public class TriangleTest {
         // ============ Equivalence Partitions Tests ==============
 
         // TC01: Ray's line intersects inside Triangle (1 points)
-        assertEquals("Ray intersects triangle - should return one point", List.of(new Point3D(0, 0, 0.5)), tri.findIntersections((new Ray(new Point3D(0, 2, 0.5), new Vector(0, -1, 0)))));
+        assertEquals("Ray intersects triangle - should return one point", new Point3D(0, 0, 0.5), tri.findIntersections((new Ray(new Point3D(0, 2, 0.5), new Vector(0, -1, 0)))).get(0).getPoint());
 
         // TC02: Ray's line intersects inside Triangle against edge (0 points)
         assertEquals("Ray intersects triangle against edge - should return null", null, tri.findIntersections((new Ray(new Point3D(0.5, -2, -1), new Vector(0, 1, 0)))));

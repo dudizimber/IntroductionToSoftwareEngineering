@@ -81,12 +81,36 @@ public class Sphere extends RadialGeometry {
 
         double t1 = alignZero(tm - th);
         double t2 = alignZero(tm + th);
-        if (t1 <= 0 && t2 <= 0) return null;
         List<GeoPoint> intersections = new ArrayList<GeoPoint>();
-        if (t1 > 0 && alignZero(t1 - maxDistance) <= 0) intersections.add(new GeoPoint(this, ray.getPoint(t1)));
-        if (t1 > 0 && alignZero(t1 - maxDistance) <= 0) intersections.add(new GeoPoint(this, ray.getPoint(t2)));
-        return intersections.isEmpty() ? null : intersections;
+        double t1dist = alignZero(maxDistance - t1);
+        double t2dist = alignZero(maxDistance - t2);
+
+        if (t1 <= 0 && t2 <= 0) {
+            return null;
+        }
+
+        if (t1 > 0 && t2 > 0) {
+            if (t1dist > 0 && t2dist > 0) {
+                return List.of(
+                        new GeoPoint(this, (ray.getPoint(t1))),
+                        new GeoPoint(this, (ray.getPoint(t2)))); //P1 , P2
+            } else if (t1dist > 0) {
+                return List.of(
+                        new GeoPoint(this, (ray.getPoint(t1))));
+            } else if (t2dist > 0) {
+                return List.of(
+                        new GeoPoint(this, (ray.getPoint(t2))));
+            }
+        }
+
+        if ((t1 > 0) && (t1dist > 0))
+            return List.of(new GeoPoint(this, (ray.getPoint(t1))));
+        else if ((t2 > 0) && (t2dist > 0))
+            return List.of(new GeoPoint(this, (ray.getPoint(t2))));
+        return null;
     }
+
+
 
     @Override
     public String toString() {

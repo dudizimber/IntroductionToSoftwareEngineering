@@ -21,7 +21,9 @@ import static primitives.Util.alignZero;
 public class Render {
     private Scene _scene;
     private ImageWriter _imageWriter;
-
+    /**
+     * A constant for the movement of the rays
+     */
     private static final double DELTA = 0.1;
 
     /**
@@ -164,6 +166,14 @@ public class Render {
         return ip.scale(ks * Math.pow(minusVr, p));
     }
 
+    /**
+     * function to verify that there is no shadow between the point and the light source
+     * @param light -  the light source
+     * @param l
+     * @param n
+     * @param geopoint
+     * @return
+     */
     private boolean unshaded(LightSource light, Vector l, Vector n, GeoPoint geopoint) {
         Vector lightDirection = l.scale(-1); // from point to light source
         Vector delta = n.scale(n.dotProduct(lightDirection) > 0 ? DELTA : -DELTA);
