@@ -57,10 +57,17 @@ public interface Intersectables {
             this.point = point;
         }
 
+        /**
+         * Gets the geometry
+         * @return
+         */
         public Geometry getGeometry() {
             return geometry;
         }
-
+        /**
+         * Gets the point
+         * @return
+         */
         public Point3D getPoint() {
             return point;
         }

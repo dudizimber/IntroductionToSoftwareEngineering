@@ -112,7 +112,12 @@ public class Render {
         _imageWriter.writeToImage();
     }
 
-
+    /**
+     * Calculate the color intensity in a point
+     * @param geopoint the point for which the color is required
+     * @param inRay the ray of the color
+     * @return
+     */
     private Color calcColor(GeoPoint geoPoint, Ray inRay) {
         Color color = calcColor(geoPoint, inRay, MAX_CALC_COLOR_LEVEL, 1.0);
         color = color.add(_scene.getAmbientLight().getIntensity());
@@ -121,15 +126,16 @@ public class Render {
 
     /**
      * Calculate the color intensity in a point
-     *
-     * @param geopoint the point for which the color is required
-     * @return the color intensity
+     * @param geoPoint the point for which the color is required
+     * @param inRay the ray of the color
+     * @param level
+     * @param k
+     * @return the color
      */
     private Color calcColor(GeoPoint geoPoint, Ray inRay, int level, double k) {
         if (level == 1) {
             return Color.BLACK;
         }
-
         Color result = geoPoint.getGeometry().getEmission();
         Point3D pointGeo = geoPoint.getPoint();
 
@@ -142,7 +148,6 @@ public class Render {
             //and orthogonal to normal
             return result;
         }
-
         Material material = geoPoint.getGeometry().getMaterial();
         int nShininess = material.getNShininess();
         double kd = material.getkD();
@@ -151,9 +156,7 @@ public class Render {
         double kt = geoPoint.getGeometry().getMaterial().getkT();
         double kkr = k * kr;
         double kkt = k * kt;
-
         result = result.add(getLightSourcesColors(geoPoint, k, result, v, n, nv, nShininess, kd, ks));
-
         if (kkr > MIN_CALC_COLOR_K) {
             Ray reflectedRay = constructReflectedRay(pointGeo, inRay, n);
             GeoPoint reflectedPoint = findClosestIntersection(reflectedRay);
@@ -170,11 +173,23 @@ public class Render {
         }
         return result;
     }
-
+    /**
+     * Constructs refracted ray with point , ray and vector
+     * @param pointGeo the point
+     * @param inRay the ray
+     * @param n the vector
+     * @return the ray
+     */
     private Ray constructRefractedRay(Point3D pointGeo, Ray inRay, Vector n) {
         return new Ray(pointGeo, inRay.getVector(), n);
     }
-
+    /**
+     * Constructs reflected ray with point , ray and vector
+     * @param pointGeo
+     * @param inRay
+     * @param n
+     * @return the ray
+     */
     private Ray constructReflectedRay(Point3D pointGeo, Ray inRay, Vector n) {
         //𝒓=𝒗 −𝟐∙(𝒗∙𝒏)∙𝒏
         Vector v = inRay.getVector();
@@ -187,7 +202,19 @@ public class Render {
         Vector r = v.subtract(n.scale(2 * vn));
         return new Ray(pointGeo, r, n);
     }
-
+    /**
+     * return the light source colors
+     * @param geoPoint
+     * @param k
+     * @param result
+     * @param v
+     * @param n
+     * @param nv
+     * @param nShininess
+     * @param kd
+     * @param ks
+     * @return the color
+     */
     private Color getLightSourcesColors(GeoPoint geoPoint, double k, Color result, Vector v, Vector n, double nv, int nShininess, double kd, double ks) {
         Point3D pointGeo = geoPoint.getPoint();
         List<LightSource> lightSources = _scene.getLights();
@@ -210,7 +237,18 @@ public class Render {
         }
         return result;
     }
-
+    /**
+     *Gets the color light sources
+     * @param geoPoint
+     * @param k
+     * @param color
+     * @param v
+     * @param n
+     * @param nShininess
+     * @param kd
+     * @param ks
+     * @return the color
+     */
     private Color getColorLightSources(GeoPoint geoPoint, double k, Color color, Vector v, Vector n, int nShininess, double kd, double ks) {
         Point3D pointGeo = geoPoint.getPoint();
         if (_scene.getLights() != null) {
@@ -237,17 +275,34 @@ public class Render {
         }
         return color;
     }
-
-
+    /**
+     *
+     * @param value
+     * @return if its positive or negative
+     */
     private boolean sign(double value) {
         return value > 0d;
     }
 
+    /**
+     * Calculate Diffusive component of light reflection.
+     * @param kd
+     * @param nl
+     * @param ip
+     * @return the color
+     */
     private Color calcDiffusive(double kd, double nl, Color ip) {
         if (nl < 0) nl = -1 * nl;
         return ip.scale(nl * kd);
     }
 
+    /**
+     *  Calculate Specular component of light reflection.
+     * @param kd diffusive component coef
+     *  @param nl dot-product n*l
+     *  @param ip light intensity at the point
+     *  @return diffusive component of light reflection*
+     */
     private Color calcSpecular(double ks, Vector l, Vector n, double nl, Vector v, int nShininess, Color ip) {
         double p = nShininess;
         Vector r = l.add(n.scale(-2 * nl));
@@ -257,29 +312,23 @@ public class Render {
         }
         return ip.scale(ks * Math.pow(minusVr, p));
     }
-
     /**
      * Find intersections of a ray with the scene geometries and get the
      * intersection point that is closest to the ray head. If there are no
      * intersections, null will be returned.
-     *
      * @param ray intersecting the scene
      * @return the closest point
      */
     public GeoPoint findClosestIntersection(Ray ray) {
-
         if (ray == null) {
             return null;
         }
-
         GeoPoint closestPoint = null;
         double closestDistance = Double.MAX_VALUE;
         Point3D ray_p0 = ray.getPoint();
-
         List<GeoPoint> intersections = _scene.getGeometries().findIntersections(ray);
         if (intersections == null)
             return null;
-
         for (GeoPoint geoPoint : intersections) {
             double distance = ray_p0.distance(geoPoint.getPoint());
             if (distance < closestDistance) {
@@ -290,7 +339,12 @@ public class Render {
         return closestPoint;
     }
     /**
-     *
+     * Return the transparency
+     * @param light
+     * @param l
+     * @param n
+     * @param geopoint
+     * @return the transparency
      */
     private double transparency(LightSource light, Vector l, Vector n, GeoPoint geopoint) {
         Vector lightDirection = l.scale(-1); // from point to light source
@@ -313,21 +367,18 @@ public class Render {
         }
         return ktr;
     }
-
-
     /**
      * function to verify that there is no shadow between the point and the light source
      * @param light -  the light source
      * @param l
      * @param n
      * @param geopoint
-     * @return
+     * @return if the is shadow or not
      */
     private boolean unshaded(LightSource light, Vector l, Vector n, GeoPoint geopoint) {
         Vector lightDirection = l.scale(-1); // from point to light source
         Ray lightRay = new Ray(geopoint.getPoint(), lightDirection, n);
         Point3D pointGeo = geopoint.getPoint();
-
         List<GeoPoint> intersections = _scene.getGeometries().findIntersections(lightRay);
         if (intersections == null) {
             return true;
@@ -341,5 +392,4 @@ public class Render {
         }
         return true;
     }
-
 }

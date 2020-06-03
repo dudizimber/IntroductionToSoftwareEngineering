@@ -53,27 +53,45 @@ public class Point3D {
     }
 
     /****** GETTERS *******/
-
+    /**
+     * ets the coordinate x
+     * @return
+     */
     public Coordinate getX() {
         return _x;
     }
-
+    /**
+     *Gets the coordinate y
+     * @return
+     */
     public Coordinate getY() {
         return _y;
     }
-
+    /**
+     *Gets the coordinate z
+     * @return
+     */
     public Coordinate getZ() {
         return _z;
     }
-
+    /**
+     *GGets the coordinate x as double
+     * @return
+     */
     public double getAsDoubleX() {
         return _x.get();
     }
-
+    /**
+     *Gets the coordinate y as double
+     * @return
+     */
     public double getAsDoubleY() {
         return _y.get();
     }
-
+    /**
+     *Gets the coordinate z as double
+     * @return
+     */
     public double getAsDoubleZ() {
         return _z.get();
     }

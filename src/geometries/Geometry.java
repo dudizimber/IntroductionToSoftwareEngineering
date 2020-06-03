@@ -40,6 +40,11 @@ public abstract class Geometry implements Intersectables {
         this(Color.BLACK, new Material(0, 0, 0));
     }
 
+    /**
+     * Get the normal vector
+     * @param point
+     * @return
+     */
     public abstract Vector getNormal(Point3D point);
 
     /**

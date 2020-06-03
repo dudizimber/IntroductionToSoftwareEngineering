@@ -8,6 +8,7 @@ import org.junit.Test;
 import elements.*;
 import geometries.Sphere;
 import geometries.Triangle;
+import geometries.Tube;
 import primitives.*;
 import renderer.*;
 import scene.Scene;
@@ -104,5 +105,38 @@ public class ReflectionRefractionTests {
 
 		render.renderImage();
 		render.writeToImage();
+	}
+	@Test
+	public void myPicture(){
+		Scene scene = new Scene("Test scene");
+		scene.setCamera(new Camera(new Point3D(0, 0, -1000), new Vector(0, 0, 1), new Vector(0, -1, 0)));
+		scene.setDistance(1000);
+		scene.setBackground(Color.BLACK);
+		scene.setAmbientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.15));
+
+		scene.addGeometries(
+				new Sphere(new Color( java.awt.Color.BLACK) , new Material(0.8, 0.8, 30, 0.8, 0), new Point3D(0, 80, -200), 200),
+				new Triangle(Color.BLACK, new Material(0.8 , 1, 10000, 0, 1), //
+						new Point3D(400, -400, -300), new Point3D(150, 300, -150), new Point3D(100, -300, 0.0)), //
+				new Sphere(new Color( java.awt.Color.BLACK) , new Material(0.8, 0.8, 30, 0.8, 0), new Point3D(1, 80, -200), 300),
+
+				new Triangle(Color.BLACK, new Material(0.8 , 1, 10000, 0, 1), //
+						new Point3D(-500, 200, -100), new Point3D(1800, 200, -700), new Point3D(-1800, 200, -700)), //
+				new Sphere(new Color( java.awt.Color.BLACK) , new Material(0.8, 0.8, 30, 0.8, 0), new Point3D(1, 80, -200), 50),
+				new Sphere(new Color( java.awt.Color.WHITE) ,new Material(0.8, 0.8, 30, 0.8, 0) , new Point3D(0, 80, -200) , 15 ));
+		scene.addLights(
+				new SpotLight(new Color(400, 400, 1020),  new Vector(2, 2, -3),  new Point3D(-300, -300, -100) ,1.0 , 0.00001, 0.000005),
+				new SpotLight(new Color(650, 400, 300),  new Vector(2, 2, -3),  new Point3D(-300, -300, 100) ,1.0 , 0.00001, 0.000005),
+				new SpotLight(new Color(400, 700, 400),  new Vector(2, 2, -3),  new Point3D(50, -300, 150) ,1.0 , 0.00001, 0.000005),
+				new PointLight(new Color (650, 400, 400), new Point3D(0, 0, -200), 0.5, 0.5, 0.5));
+
+
+
+
+		ImageWriter imageWriter = new ImageWriter("MyPicture", 1000, 1000, 1000, 1000);
+		Render render = new Render(scene, imageWriter);
+		render.renderImage();
+		imageWriter.writeToImage();
+
 	}
 }

@@ -12,6 +12,10 @@ public abstract class Light {
      */
     protected Color _intensity;
 
+    /**
+     * Constructor bade on color
+     * @param color - the intensity
+     */
     public Light(Color color) {
         this._intensity = color;
     }

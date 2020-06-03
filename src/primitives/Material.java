@@ -1,5 +1,8 @@
 package primitives;
 
+/**
+ * Class Material - represents the material of objects
+ */
 public class Material {
     public static Material DEFAULT = new Material(0, 0, 0);
     private double _kD, _kS, _kT, _kR;
@@ -16,6 +19,14 @@ public class Material {
          this(_kD, _kS, _nShininess, 0, 0);
     }
 
+    /**
+     * Instantiates a new Material.
+     * @param _kD
+     * @param _kS
+     * @param _nShininess
+     * @param _kT
+     * @param _kR
+     */
     public Material(double _kD, double _kS, int _nShininess,double _kT,double  _kR){
         this._kD = _kD;
         this._kS = _kS;

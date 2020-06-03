@@ -32,6 +32,9 @@ public class CameraIntegrationTest {
             new Vector(0, -1, 0)
     );
     @Test
+    /**
+     *  construct a ray through pixel using Sphere
+     */
    public  void constructRayThroughPixelWithSphere1() {
         //TO DO
         Sphere sph =  new Sphere( new Point3D(0, 0, 3), 1);
@@ -53,6 +56,9 @@ public class CameraIntegrationTest {
 
     }
     @Test
+    /**
+     *  construct a ray through pixel using Sphere
+     */
     public void constructRayThroughPixelWithSphere2() {
         Sphere sph = new Sphere( new Point3D(0, 0, 2.5), 2.5);
 

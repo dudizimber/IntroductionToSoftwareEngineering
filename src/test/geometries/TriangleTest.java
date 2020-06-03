@@ -35,8 +35,6 @@ public class TriangleTest {
         assertTrue("Error: Triangle getNormal not returning correct value", normal.equals(tri.getNormal(a)));
 
     }
-
-
     /**
      * Test method for {@link Triangle#findIntersections(Ray)}}
      */
