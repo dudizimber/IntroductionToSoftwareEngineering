@@ -24,7 +24,6 @@ public class Ray {
         _point = point;
         _vector = vector.normalize();
     }
-
     /****** GETTERS *******/
 
     public Point3D getPoint() {

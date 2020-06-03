@@ -14,16 +14,27 @@ public class Geometries implements Intersectables {
 
     private List<Intersectables> _geometries;
 
+    /**
+     * Default constructor
+     */
     public Geometries() {
         //  ArrayList is better for storing and accessing data.
         _geometries = new ArrayList<>();
     }
 
+    /**
+     * Initialize the geometries based on the geometries received
+     * @param geometries
+     */
     public Geometries(Intersectables... geometries) {
         _geometries = new ArrayList<>();
         add(geometries);
     }
 
+    /**
+     * Add new geometries
+     * @param geometries
+     */
     public void add(Intersectables... geometries) {
         for (Intersectables geometry : geometries) {
             _geometries.add(geometry);
