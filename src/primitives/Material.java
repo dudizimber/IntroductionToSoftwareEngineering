@@ -21,13 +21,14 @@ public class Material {
 
     /**
      * Instantiates a new Material.
-     * @param _kD
-     * @param _kS
-     * @param _nShininess
-     * @param _kT
-     * @param _kR
+     *
+     * @param _kD         kD coefficient
+     * @param _kS         ks coefficient
+     * @param _nShininess shininess coefficient
+     * @param _kT         kt coefficient
+     * @param _kR         kr coefficient
      */
-    public Material(double _kD, double _kS, int _nShininess,double _kT,double  _kR){
+    public Material(double _kD, double _kS, int _nShininess, double _kT, double _kR) {
         this._kD = _kD;
         this._kS = _kS;
         this._nShininess = _nShininess;
@@ -36,36 +37,43 @@ public class Material {
     }
 
     /**
-     * Returs the kD coefficient
-     * @return
+     * Instantiates a new Material from reference.
+     *
+     * @param material the other material
+     */
+    public Material(Material material) {
+        this(material._kD, material._kS, material._nShininess, material._kT, material._kR);
+    }
+
+    /**
+     * Get the kD coefficient
      */
     public double getkD() {
         return _kD;
     }
+
     /**
-     *
-     * @return
+     * Get the kT coefficient
      */
     public double getkT() {
         return _kT;
     }
+
     /**
-     *Returs the kT coefficient
-     * @return
+     * Get the kR coefficient
      */
     public double getkR() {
         return _kR;
     }
+
     /**
-     *Returs the kR coefficient
-     * @return
+     * Get the kS coefficient
      */
     public double getkS() {
         return _kS;
     }
     /**
-     *Returs the kS coefficient
-     * @return
+     * Get nShininess coefficient
      */
     public int getNShininess() {
         return _nShininess;

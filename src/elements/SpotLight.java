@@ -3,9 +3,8 @@ package elements;
 import primitives.Color;
 import primitives.Point3D;
 import primitives.Vector;
-import primitives.Util;
+
 import static primitives.Util.alignZero;
-import static primitives.Util.isZero;
 
 /**
  *Models point light source with direction

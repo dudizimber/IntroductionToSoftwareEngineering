@@ -13,7 +13,7 @@ public class Point3D {
 
     public static Point3D ZERO = new Point3D(0, 0, 0);
 
-    /****** CONTRUCTORS *******/
+    /****** CONSTRUCTORS *******/
 
     /**
      * Constructor based on three doubles that we turn into coordinates

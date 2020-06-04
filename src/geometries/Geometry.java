@@ -20,8 +20,8 @@ public abstract class Geometry implements Intersectables {
      * @param color the emission color
      */
     public Geometry(Color color, Material material) {
-        this._emission = color;
-        this._material = material;
+        this._emission = new Color(color);
+        this._material = new Material(material);
     }
 
     /**

@@ -7,7 +7,6 @@ import primitives.Vector;
 /**
  * Represents a omni-directional point source
  *
- *
  */
 public class PointLight extends Light implements LightSource {
     protected Point3D _position;
@@ -34,9 +33,8 @@ public class PointLight extends Light implements LightSource {
      */
     @Override
     public Color getIntensity(Point3D p) {
-        double dSquared = p.distanceSquared(_position);
         double d = p.distance(_position);
-        return _intensity.reduce(_kC + _kL * d + _kQ * dSquared);
+        return _intensity.reduce(_kC + _kL * d + _kQ * d * d);
     }
 
     /**
