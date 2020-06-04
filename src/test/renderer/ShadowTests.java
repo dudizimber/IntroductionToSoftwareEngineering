@@ -1,11 +1,17 @@
 package test.renderer;
 
+import elements.AmbientLight;
+import elements.Camera;
+import elements.SpotLight;
+import geometries.Sphere;
+import geometries.Triangle;
 import org.junit.Test;
-
-import elements.*;
-import geometries.*;
-import primitives.*;
-import renderer.*;
+import primitives.Color;
+import primitives.Material;
+import primitives.Point3D;
+import primitives.Vector;
+import renderer.ImageWriter;
+import renderer.Render;
 import scene.Scene;
 
 /**
@@ -131,20 +137,20 @@ public class ShadowTests {
 		scene.setAmbientLight(new AmbientLight(Color.BLACK, 0));
 
 		scene.addGeometries(new Sphere(new Color(java.awt.Color.BLUE), new Material(0.5, 0.5, 30), //
-				 new Point3D(0, 0, 200) , 60), //
+						new Point3D(0, 0, 200), 60), //
 				new Triangle(new Color(java.awt.Color.BLUE), new Material(0.5, 0.5, 30), //
-						new Point3D(-60, 30, 15), new Point3D(-30, 60, 15), new Point3D(-58, 58, 80)));
+						new Point3D(-70, 40, 0), new Point3D(-40, 70, 0), new Point3D(-68, 68, 4)));
 
 		scene.addLights(new SpotLight(new Color(400, 240, 0), //
-				 new Vector(1, -1, 3),new Point3D(-100, 100, -200), 1, 1E-5, 1.5E-7));
+				new Vector(1, -1, 3), new Point3D(-70, 70, -50), 1, 1E-5, 1.5E-7));
 
 		ImageWriter imageWriter = new ImageWriter("sphereTriangleSpot2", 200, 200, 400, 400);
-		Render render = new Render( scene , imageWriter);
+		Render render = new Render(scene, imageWriter);
 
 		render.renderImage();
 		render.writeToImage();
-	}	
-	
+	}
+
 	/**
 	 * Produce a picture of a two triangles lighted by a spot light with a Sphere producing a shading
 	 */

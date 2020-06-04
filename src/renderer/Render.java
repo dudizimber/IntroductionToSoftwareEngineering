@@ -264,17 +264,14 @@ public class Render {
                 double nv = n.dotProduct(v);
                 double ktr;
                 if (nl * nv > 0) {
-//                if (unshaded(lightSource, l, n, geoPoint)) {
-//                    ktr = 1d;
-//                } else {
-//                    ktr = 0d;
-//                }
-                    ktr = transparency(lightSource, l, n, geoPoint);
-                    if (ktr * k > MIN_CALC_COLOR_K) {
-                        Color lightIntensity = lightSource.getIntensity(pointGeo).scale(ktr);
-                        color = color.add(
-                                calcDiffusive(kd, nl, lightIntensity),
-                                calcSpecular(ks, l, n, nl, v, nShininess, lightIntensity));
+                    if (unshaded(lightSource, l, n, geoPoint)) {
+                        ktr = transparency(lightSource, l, n, geoPoint);
+                        if (ktr * k > MIN_CALC_COLOR_K) {
+                            Color lightIntensity = lightSource.getIntensity(pointGeo).scale(ktr);
+                            color = color.add(
+                                    calcDiffusive(kd, nl, lightIntensity),
+                                    calcSpecular(ks, l, n, nl, v, nShininess, lightIntensity));
+                        }
                     }
                 }
             }
@@ -308,13 +305,12 @@ public class Render {
      * @return diffusive component of light reflection*
      */
     private Color calcSpecular(double ks, Vector l, Vector n, double nl, Vector v, int nShininess, Color ip) {
-        double p = nShininess;
         Vector r = l.add(n.scale(-2 * nl));
         double minusVr = -alignZero(r.dotProduct(v));
         if (minusVr <= 0) {
             return Color.BLACK;
         }
-        return ip.scale(ks * Math.pow(minusVr, p));
+        return ip.scale(ks * Math.pow(minusVr, nShininess));
     }
 
     /**
@@ -389,7 +385,7 @@ public class Render {
         Vector lightDirection = l.scale(-1); // from point to light source
         Ray lightRay = new Ray(geopoint.getPoint(), lightDirection, n);
         Point3D pointGeo = geopoint.getPoint();
-        List<GeoPoint> intersections = _scene.getGeometries().findIntersections(lightRay);
+        List<GeoPoint> intersections = _scene.getGeometries().findIntersections(lightRay, light.getDistance(pointGeo));
         if (intersections == null) {
             return true;
         }
