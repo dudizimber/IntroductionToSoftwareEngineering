@@ -2,7 +2,11 @@ package elements;
 
 import primitives.Point3D;
 import primitives.Ray;
+import primitives.Util;
 import primitives.Vector;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static primitives.Util.isZero;
 
@@ -116,4 +120,69 @@ public class Camera {
 
     }
 
+    /**
+     *
+     * @param nX
+     * @param nY
+     * @param j
+     * @param i
+     * @param screenDistance the distance from screen
+     * @param screenWidth the width of the screen
+     * @param screenHeight the height of the screen
+     * @param num_of_rays the number of rays
+     * @return the list of rays
+     */
+    public List<Ray> constructRaysThroughPixel(int nX, int nY, int j, int i, double screenDistance,
+                                               double screenWidth, double screenHeight, int num_of_rays)
+    {
+        if (isZero(screenDistance))
+        {
+            throw new IllegalArgumentException("distance cannot be 0");
+        }
+        List<Ray> sample_rays = new ArrayList<>();
+        double Ry = screenHeight/nY;
+        double Rx = screenWidth/nX;
+        double yi =  ((i - nY/2d)*Ry);
+        double xj=   ((j - nX/2d)*Rx);
+        for (int row = 0; row < num_of_rays; ++row) {
+            for (int column = 0; column < num_of_rays; ++column) {
+                sample_rays.add(constructRaysThroughPixel(num_of_rays, num_of_rays,yi, xj, row, column,screenDistance, Rx, Ry));
+            }
+        }
+        return sample_rays;
+    }
+
+    /**
+     *
+     * @param nX
+     * @param nY
+     * @param yi
+     * @param xj
+     * @param j
+     * @param i
+     * @param screenDistance  the distance from screen
+     * @param pixelWidth the width of the screen
+     * @param pixelHeight the height of the screen
+     * @return the ray
+     */
+    private Ray constructRaysThroughPixel(int nX, int nY, double yi, double xj, int j, int i, double screenDistance,
+                                          double pixelWidth, double pixelHeight)
+    {
+        Point3D Pc = new Point3D( _p0.add(_vectorTowards.scale(screenDistance)));
+        double Ry = pixelHeight/nY;
+        double Rx = pixelWidth/nX;
+        double y_sample_i =  (i *Ry + Ry/2d);
+        double x_sample_j=   (j *Rx + Rx/2d);
+        Point3D Pij = Pc;
+        if (!Util.isZero(x_sample_j + xj))
+        {
+            Pij = Pij.add(_vectorRight.scale(x_sample_j + xj));
+        }
+        if (!Util.isZero(y_sample_i + yi))
+        {
+            Pij = Pij.add(_vectorUp.scale(-y_sample_i -yi ));
+        }
+        Vector Vij = Pij.subtract(_p0);
+        return new Ray(_p0,Vij);
+    }
 }
