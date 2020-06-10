@@ -42,7 +42,7 @@ public class Render {
     /**
      * Renders the image.
      */
-    public void renderImage() {
+    public void renderImage(){
         Color background = _scene.getBackground();
         Camera camera = _scene.getCamera();
         Intersectables geometries = _scene.getGeometries();
@@ -134,21 +134,6 @@ public class Render {
      * @return the color
      */
     private Color calcColor(GeoPoint geoPoint, Ray inRay, int level, double k) {
-        if (level == 1) {
-            return Color.BLACK;
-        }
-        Color result = geoPoint.getGeometry().getEmission();
-        Point3D pointGeo = geoPoint.getPoint();
-
-        Vector v = pointGeo.subtract(_scene.getCamera().getP0()).normalize();
-        Vector n = geoPoint.getGeometry().getNormal(pointGeo);
-
-        double nv = alignZero(n.dotProduct(v));
-        if (nv == 0) {
-            //ray parallel to geometry surface ??
-            //and orthogonal to normal
-            return result;
-        }
         Material material = geoPoint.getGeometry().getMaterial();
         int nShininess = material.getNShininess();
         double kd = material.getkD();
@@ -157,6 +142,20 @@ public class Render {
         double kt = geoPoint.getGeometry().getMaterial().getkT();
         double kkr = k * kr;
         double kkt = k * kt;
+        Color result = geoPoint.getGeometry().getEmission();
+        if (level == 0) {
+            return Color.BLACK;
+        }
+        Point3D pointGeo = geoPoint.getPoint();
+        Vector v = inRay.getVector();
+      //  Vector v = pointGeo.subtract(_scene.getCamera().getP0()).normalize();
+        Vector n = geoPoint.getGeometry().getNormal(pointGeo);
+        double nv = alignZero(n.dotProduct(v));
+        if (nv == 0) {
+            //ray parallel to geometry surface ??
+            //and orthogonal to normal
+            return result;
+        }
         result = result.add(getLightSourcesColors(geoPoint, k, result, v, n, nv, nShininess, kd, ks));
         if (kkr > MIN_CALC_COLOR_K) {
             Ray reflectedRay = constructReflectedRay(pointGeo, inRay, n);
@@ -198,7 +197,7 @@ public class Render {
     private Ray constructReflectedRay(Point3D pointGeo, Ray inRay, Vector n) {
         Vector v = inRay.getVector();
         double vn = v.dotProduct(n);
-        if (vn == 0) {
+        if (alignZero(vn) == 0) {
             return null;
         }
         Vector r = v.subtract(n.scale(2 * vn));
@@ -241,44 +240,6 @@ public class Render {
         }
         return result;
     }
-
-    /**
-     * Gets the color light sources
-     *
-     * @param geoPoint
-     * @param k
-     * @param color
-     * @param v
-     * @param n
-     * @param nShininess
-     * @param kd
-     * @param ks
-     * @return the color
-     */
-    private Color getColorLightSources(GeoPoint geoPoint, double k, Color color, Vector v, Vector n, int nShininess, double kd, double ks) {
-        Point3D pointGeo = geoPoint.getPoint();
-        if (_scene.getLights() != null) {
-            for (LightSource lightSource : _scene.getLights()) {
-                Vector l = lightSource.getL(pointGeo);
-                double nl = n.dotProduct(l);
-                double nv = n.dotProduct(v);
-                double ktr;
-                if (nl * nv > 0) {
-                    if (unshaded(lightSource, l, n, geoPoint)) {
-                        ktr = transparency(lightSource, l, n, geoPoint);
-                        if (ktr * k > MIN_CALC_COLOR_K) {
-                            Color lightIntensity = lightSource.getIntensity(pointGeo).scale(ktr);
-                            color = color.add(
-                                    calcDiffusive(kd, nl, lightIntensity),
-                                    calcSpecular(ks, l, n, nl, v, nShininess, lightIntensity));
-                        }
-                    }
-                }
-            }
-        }
-        return color;
-    }
-
     /**
      * Calculate Diffusive component of light reflection.
      *
