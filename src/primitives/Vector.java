@@ -176,6 +176,41 @@ public class Vector {
         return new Vector(this).normalize();
     }
 
+    /**
+     *  creates a vnormal vector to the vector that calls the function
+     * @return
+     */
+    public Vector normalToVector()
+    {
+        int min=0;
+        double coordinate;
+        if(this.getPoint()._x.get()>0)
+        {
+            coordinate = this.getPoint()._x.get();
+        }
+        else
+            coordinate=-this.getPoint()._x.get();
+        if(Math.abs(this.getPoint()._y.get())<coordinate)
+        {
+            coordinate=1;
+            if(this.getPoint()._y.get()>0)
+                coordinate=this.getPoint()._y.get();
+            else
+                coordinate=-this.getPoint()._y.get();
+        }
+        if(Math.abs(this.getPoint()._z.get())<coordinate)
+        {
+            coordinate=2;//last coordinate that we are checking so no need to reassign coordinate
+        }
+        if(coordinate==0)//x is the smallest
+            return new Vector(0,-this.getPoint()._z.get(),this.getPoint()._y.get()).normalize();
+        if(coordinate==1)//y is the the smallest
+            return new Vector(-this.getPoint()._z.get(),0,this.getPoint()._x.get()).normalize();
+        //z is the smallest
+        return new Vector(this.getPoint()._y.get(),-this.getPoint()._x.get(),0).normalize();
+    }
+
+
     @Override
     public String toString() {
         return "Vector:\n - " + this._point.toString();

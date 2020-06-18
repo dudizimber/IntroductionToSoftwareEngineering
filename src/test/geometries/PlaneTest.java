@@ -48,7 +48,7 @@ public class PlaneTest {
         List<Intersectables.GeoPoint> result = plane.findIntersections(ray);
         List expected = List.of(new Point3D(4, 4, 0));
 
-        assertEquals("Does not return the correct intersection", List.of(result.get(0).getPoint()), expected);
+        assertEquals("Does not return the correct intersection", List.of(result.get(0).point), expected);
 
         // TC02: Ray's line does not intersects Plane (0 points)
 
@@ -75,7 +75,7 @@ public class PlaneTest {
 
         // TC05: Ray's orthogonal to Plane - before (1 points)
         assertEquals("Orthogonal ray starts before plane - should return one intersection", new Point3D(1, 1, 0),
-                plane.findIntersections(new Ray(new Point3D(1, 1, -3), new Vector(0, 0, 9.5))).get(0).getPoint()
+                plane.findIntersections(new Ray(new Point3D(1, 1, -3), new Vector(0, 0, 9.5))).get(0).point
         );
 
         // TC06: Ray's orthogonal to Plane - in (0 points)

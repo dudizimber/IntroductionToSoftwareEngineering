@@ -9,6 +9,7 @@ import geometries.Intersectables.GeoPoint;
 import primitives.*;
 import scene.Scene;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import static primitives.Util.alignZero;
@@ -21,6 +22,8 @@ import static primitives.Util.alignZero;
 public class Render {
     private Scene _scene;
     private ImageWriter _imageWriter;
+    private int _numOfRays;
+    private double _rayDistance;
     private static final int MAX_CALC_COLOR_LEVEL = 10;
     private static final double MIN_CALC_COLOR_K = 0.001;
     private static final boolean SAMPLE_RAYS_IMPROVED =  true;
@@ -31,14 +34,61 @@ public class Render {
     private static final double DELTA = 0.1;
 
     /**
+     * Get num of rays
+     * @return
+     */
+    public int get_numOfRays() {
+        return _numOfRays;
+    }
+
+    /**
+     * Set num of rays
+     * @param _numOfRays
+     */
+    public void set_numOfRays(int _numOfRays) {
+        if (_numOfRays<1)
+            throw  new IllegalArgumentException("Number of rays needs to be at least 1");
+        this._numOfRays = _numOfRays;
+    }
+
+    /**
+     * Gets distance between ray and circle
+     * @return
+     */
+    public double get_rayDistance() {
+        return _rayDistance;
+    }
+
+    /**
+     * Sets distance between ray and circle
+     * @param _rayDistance
+     */
+    public void set_rayDistance(double _rayDistance) {
+        if (_rayDistance < 0)
+            throw new IllegalArgumentException("Distance cannot be negative");
+        this._rayDistance = _rayDistance;
+    }
+
+    /**
+     * Constuctor with default values for num of rays and ray distance
+     * @param _scene
+     * @param _imageWriter
+     */
+    public Render(Scene _scene, ImageWriter _imageWriter) {
+       this ( _scene,_imageWriter, 1,0);
+
+    }
+    /**
      * Instantiates a new Render.
      *
      * @param _scene       the scene to render
      * @param _imageWriter the image writer class to create the image
      */
-    public Render(Scene _scene, ImageWriter _imageWriter) {
+    public Render(Scene _scene, ImageWriter _imageWriter, int _numOfRays , int _rayDistance) {
         this._scene = _scene;
         this._imageWriter = _imageWriter;
+        this._numOfRays=_numOfRays;
+        this._rayDistance = _rayDistance;
     }
 
     /**
@@ -155,6 +205,7 @@ public class Render {
         return color;
     }
 
+
     /**
      * Calculate the color intensity in a point
      *
@@ -165,16 +216,13 @@ public class Render {
      * @return the color
      */
     private Color calcColor(GeoPoint geoPoint, Ray inRay, int level, double k) {
-        Material material = geoPoint.geometry.getMaterial();
-        int nShininess = material.getNShininess();
-        double kd = material.getkD();
-        double ks = material.getkS();
+        List<Ray>beam = new LinkedList<>();
         double kr = geoPoint.geometry.getMaterial().getkR();
         double kt = geoPoint.geometry.getMaterial().getkT();
         double kkr = k * kr;
         double kkt = k * kt;
         Color result = geoPoint.geometry.getEmission();
-        if (level == 0) {
+        if (level == 1) {
             return Color.BLACK;
         }
         Point3D pointGeo = geoPoint.point;
@@ -183,25 +231,72 @@ public class Render {
         Vector n = geoPoint.geometry.getNormal(pointGeo);
         double nv = alignZero(n.dotProduct(v));
         if (nv == 0) {
-            //ray parallel to geometry surface ??
-            //and orthogonal to normal
             return result;
         }
-        result = result.add(getLightSourcesColors(geoPoint, k, result, v, n, nv, nShininess, kd, ks));
-        if (kkr > MIN_CALC_COLOR_K) {
-            Ray reflectedRay = constructReflectedRay(pointGeo, inRay, n);
-            GeoPoint reflectedPoint = findClosestIntersection(reflectedRay);
-            if (reflectedPoint != null) {
-                result = result.add(calcColor(reflectedPoint, reflectedRay, level - 1, kkr).scale(kr));
+        double transparency=0;//transparency
+        for (LightSource lightSource : _scene.getLights())//for each light source in the scene's light sources
+        {
+            Vector l = lightSource.getL(geoPoint.point);//the lights direction from geopoint
+            if (alignZero( geoPoint.geometry.getNormal(geoPoint.point).dotProduct(l)) * alignZero( geoPoint.geometry.getNormal(geoPoint.point).dotProduct(v)) > 0)//if the dot product between the normal and the light direction times the dot product btween the normal and the normal vector between the camera and geopoint
+            {
+                transparency = transparency(lightSource, l,  geoPoint.geometry.getNormal(geoPoint.point), geoPoint);
+                if (transparency * k > MIN_CALC_COLOR_K) {
+                    Material material = geoPoint.geometry.getMaterial();
+                    double ln =l.dotProduct( geoPoint.geometry.getNormal(geoPoint.point));
+                    result = result.add(calcDiffusive(
+                            material.getkD(),
+                            ln,
+                            lightSource.getIntensity(geoPoint.point)),
+                            calcSpecular(
+                                    material.getkS(), l,
+                                    geoPoint.geometry.getNormal(geoPoint.point),
+                                    ln,
+                                    v,
+                                    material.getNShininess(),
+                                    lightSource.getIntensity(geoPoint.point)));
+                }
             }
         }
-        if (kkt > MIN_CALC_COLOR_K) {
-            Ray refractedRay = constructRefractedRay(pointGeo, inRay, n);
-            GeoPoint refractedPoint = findClosestIntersection(refractedRay);
-            if (refractedPoint != null) {
-                result = result.add(calcColor(refractedPoint, refractedRay, level - 1, kkt).scale(kt));
+
+        if (kr > MIN_CALC_COLOR_K)//if the reflection is bigger than the minimum of calc color
+        {
+            Ray reflection= constructReflectedRay(geoPoint.point,inRay , geoPoint.geometry.getNormal(geoPoint.point));
+            if (this._numOfRays==0 ||this._rayDistance<0)
+                beam.add(reflection);
+            else
+                beam=  reflection.createBeamOfRays(geoPoint.geometry.getNormal(geoPoint.point),this._scene.getDistance(),this.get_numOfRays());
+            primitives.Color tempColor = primitives.Color.BLACK;
+            for(Ray r :beam)
+            {
+                GeoPoint reflectedGp = findClosestIntersection(r);//find the closest point to the reflection ray's p0
+                if (reflectedGp != null)//if such a point exists
+                {
+                    tempColor = tempColor.add(calcColor(reflectedGp, r, level - 1, kr).scale(kr));//calls the recursion th find the rest of the color and then scales it with the reflection
+                }
             }
+            result = result.add(tempColor.reduce(beam.size()));
+
+
         }
+        if (kt > MIN_CALC_COLOR_K)//if the refraction is bigger than the minimum of calc color
+        {
+            Ray refraction = constructRefractedRay(geoPoint.point, inRay, geoPoint.geometry.getNormal(geoPoint.point));//constructs a refracted ray
+            if(this._numOfRays==0 ||this._rayDistance<0)
+                beam.add(refraction);
+            else
+                beam=  refraction.createBeamOfRays(geoPoint.geometry.getNormal(geoPoint.point),this._scene.getDistance(),this.get_numOfRays());
+            primitives.Color tempColor = primitives.Color.BLACK;
+            for(Ray r :beam) {
+                GeoPoint refractedGp = findClosestIntersection(r);//find the closest point to the refracted ray's p0
+                if (refractedGp != null)//if such a point exists
+                {
+                    tempColor = tempColor.add(calcColor(refractedGp, r, level - 1, kt).scale(kt));//calls the recursion to find the rest of the color and then scales it with the refracted
+
+                }
+            }
+            result = result.add(tempColor.reduce(beam.size()));
+        }
+
         return result;
     }
 
