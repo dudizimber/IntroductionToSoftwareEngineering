@@ -21,35 +21,33 @@ public class Ray {
     /****** CONSTRUCTORS *******/
 
     /**
-     * Constructor based on point and vector
-     *
-     * @param point
-     * @param vector
-     */
-    public Ray(Point3D point, Vector vector) {
-        _point = point;
-        _vector = vector.normalize();
-    }
-
-    /**
      * Constructor based on point , direction and normal
      * @param point
      * @param direction
      * @param normal
      */
     public Ray(Point3D point, Vector direction, Vector normal) {
-        //point + normal.scale(±DELTA)
         _vector = new Vector(direction).normalized();
-
-        double nv = normal.dotProduct(direction);
-
-        Vector normalDelta = normal.scale((nv > 0 ? DELTA : -DELTA));
+        Vector n = new Vector(normal);
+        double nv = n.dotProduct(direction);
+        Vector normalDelta = n.scale((nv > 0 ? DELTA : -DELTA));
         _point = point.add(normalDelta);
+    }
+
+    /**
+     * Constructor based on point and vector
+     *
+     * @param point
+     * @param vector
+     */
+    public Ray(Point3D point, Vector vector) {
+        this(point, vector, new Vector(point));
     }
 
     /****** GETTERS *******/
     /**
      * Gets the point
+     *
      * @return
      */
     public Point3D getPoint() {

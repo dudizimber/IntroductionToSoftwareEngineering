@@ -26,58 +26,20 @@ public class Render {
     private double _rayDistance;
     private static final int MAX_CALC_COLOR_LEVEL = 10;
     private static final double MIN_CALC_COLOR_K = 0.001;
-    private static final boolean SAMPLE_RAYS_IMPROVED =  true;
+    private static final boolean SAMPLE_RAYS_IMPROVED = false;
     private static final int NUM_OF_SAMPLE_RAYS = 8; //64 rays
-    /**
-     * A constant for the movement of the rays
-     */
-    private static final double DELTA = 0.1;
+
 
     /**
-     * Get num of rays
-     * @return
-     */
-    public int get_numOfRays() {
-        return _numOfRays;
-    }
-
-    /**
-     * Set num of rays
-     * @param _numOfRays
-     */
-    public void set_numOfRays(int _numOfRays) {
-        if (_numOfRays<1)
-            throw  new IllegalArgumentException("Number of rays needs to be at least 1");
-        this._numOfRays = _numOfRays;
-    }
-
-    /**
-     * Gets distance between ray and circle
-     * @return
-     */
-    public double get_rayDistance() {
-        return _rayDistance;
-    }
-
-    /**
-     * Sets distance between ray and circle
-     * @param _rayDistance
-     */
-    public void set_rayDistance(double _rayDistance) {
-        if (_rayDistance < 0)
-            throw new IllegalArgumentException("Distance cannot be negative");
-        this._rayDistance = _rayDistance;
-    }
-
-    /**
-     * Constuctor with default values for num of rays and ray distance
+     * Constructor with default values for num of rays and ray distance
+     *
      * @param _scene
      * @param _imageWriter
      */
     public Render(Scene _scene, ImageWriter _imageWriter) {
        this ( _scene,_imageWriter, 1,0);
-
     }
+
     /**
      * Instantiates a new Render.
      *
@@ -87,7 +49,7 @@ public class Render {
     public Render(Scene _scene, ImageWriter _imageWriter, int _numOfRays , int _rayDistance) {
         this._scene = _scene;
         this._imageWriter = _imageWriter;
-        this._numOfRays=_numOfRays;
+        this._numOfRays = _numOfRays;
         this._rayDistance = _rayDistance;
     }
 
@@ -264,7 +226,7 @@ public class Render {
             if (this._numOfRays==0 ||this._rayDistance<0)
                 beam.add(reflection);
             else
-                beam=  reflection.createBeamOfRays(geoPoint.geometry.getNormal(geoPoint.point),this._scene.getDistance(),this.get_numOfRays());
+                beam = reflection.createBeamOfRays(geoPoint.geometry.getNormal(geoPoint.point), this._scene.getDistance(), this._numOfRays);
             primitives.Color tempColor = primitives.Color.BLACK;
             for(Ray r :beam)
             {
@@ -284,7 +246,7 @@ public class Render {
             if(this._numOfRays==0 ||this._rayDistance<0)
                 beam.add(refraction);
             else
-                beam=  refraction.createBeamOfRays(geoPoint.geometry.getNormal(geoPoint.point),this._scene.getDistance(),this.get_numOfRays());
+                beam = refraction.createBeamOfRays(geoPoint.geometry.getNormal(geoPoint.point), this._scene.getDistance(), this._numOfRays);
             primitives.Color tempColor = primitives.Color.BLACK;
             for(Ray r :beam) {
                 GeoPoint refractedGp = findClosestIntersection(r);//find the closest point to the refracted ray's p0
@@ -480,7 +442,7 @@ public class Render {
         double lightDistance = light.getDistance(pointGeo);
         for (GeoPoint gp : intersections) {
             if (alignZero(gp.point.distance(pointGeo) - lightDistance) <= 0
-                    && gp.geometry.getMaterial().getkT() == 0) {
+                    || gp.geometry.getMaterial().getkT() == 0) {
                 return false;
             }
         }
