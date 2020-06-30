@@ -1,15 +1,13 @@
 package test.elements;
 
 import elements.Camera;
-import geometries.Intersectables.GeoPoint;
 import geometries.Intersectables;
-import geometries.Plane;
 import geometries.Sphere;
-import geometries.Triangle;
 import org.junit.Test;
 import primitives.Point3D;
-import primitives.Vector;
 import primitives.Ray;
+import primitives.Vector;
+
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -52,8 +50,6 @@ public class CameraIntegrationTest {
         }
 
         assertEquals("too bad",2,count);
-        System.out.println("count: "+count);
-
     }
     @Test
     /**
@@ -78,6 +74,5 @@ public class CameraIntegrationTest {
         }
 
         assertEquals("too bad",18, count);
-        System.out.println("count: " + count);
     }
 }

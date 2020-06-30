@@ -33,11 +33,24 @@ public abstract class Util {
 
     /**
      * Aligns the number to zero if it is almost zero
-     * 
+     *
      * @param number
      * @return 0.0 if the number is very close to zero, the number itself otherwise
      */
     public static double alignZero(double number) {
         return getExp(number) < ACCURACY ? 0.0 : number;
+    }
+
+
+    /**
+     * Generates random number [min, max)
+     *
+     * @param min min value of random range
+     * @param max max value (not included) of random range
+     * @return random number[min, max)
+     */
+    public static double randomNumber(double min, double max) {
+        double random = Math.random() * (max - min) + min;
+        return random;
     }
 }

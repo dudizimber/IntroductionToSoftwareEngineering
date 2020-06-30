@@ -5,8 +5,9 @@ package primitives;
  */
 public class Material {
     public static Material DEFAULT = new Material(0, 0, 0);
-    private double _kD, _kS, _kT, _kR;
-    private int _nShininess;
+    final private double _kD, _kS, _kT, _kR;
+    final private int _nShininess;
+    private double _glossBlur = 0;
 
     /**
      * Instantiates a new Material.
@@ -16,7 +17,7 @@ public class Material {
      * @param _nShininess shininess coefficient
      */
     public Material(double _kD, double _kS, int _nShininess) {
-         this(_kD, _kS, _nShininess, 0, 0);
+        this(_kD, _kS, _nShininess, 0, 0);
     }
 
     /**
@@ -37,25 +38,16 @@ public class Material {
     }
 
     /**
-     * Instantiates a new Material from reference.
-     *
-     * @param material the other material
-     */
-    public Material(Material material) {
-        this(material._kD, material._kS, material._nShininess, material._kT, material._kR);
-    }
-
-    /**
      * Get the kD coefficient
      */
-    public double getkD() {
+    public double getKD() {
         return _kD;
     }
 
     /**
      * Get the kT coefficient
      */
-    public double getkT() {
+    public double getKT() {
         return _kT;
     }
 
@@ -69,13 +61,34 @@ public class Material {
     /**
      * Get the kS coefficient
      */
-    public double getkS() {
+    public double getKS() {
         return _kS;
     }
+
     /**
      * Get nShininess coefficient
      */
     public int getNShininess() {
         return _nShininess;
+    }
+
+    /**
+     * Get glossy reflection and blurry transparency radius
+     *
+     * @return radius value
+     */
+    public double getGlossBlur() {
+        return _glossBlur;
+    }
+
+    /**
+     * Set glossy reflection and blurry transparency radius
+     *
+     * @param value radius value
+     * @return material object itself
+     */
+    public Material setGlossBlur(double value) {
+        _glossBlur = value;
+        return this;
     }
 }

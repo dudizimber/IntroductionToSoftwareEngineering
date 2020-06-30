@@ -1,7 +1,6 @@
 package test.renderer;
 
 import org.junit.Test;
-import primitives.Color;
 import renderer.ImageWriter;
 
 /**
@@ -27,7 +26,7 @@ public class ImageWriterTest {
         for (int col = 0; col < ny; col++)
             for (int row = 0; row < nx; row++)
                 if (col % 50 == 0 || row % 50 == 0)
-                    imageWriter.writePixel(row, col, new Color(java.awt.Color.YELLOW));
+                    imageWriter.writePixel(row, col, java.awt.Color.YELLOW);
 
         imageWriter.writeToImage();
 

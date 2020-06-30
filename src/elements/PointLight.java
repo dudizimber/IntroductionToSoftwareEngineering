@@ -6,7 +6,6 @@ import primitives.Vector;
 
 /**
  * Represents a omni-directional point source
- *
  */
 public class PointLight extends Light implements LightSource {
     protected Point3D _position;
@@ -19,7 +18,7 @@ public class PointLight extends Light implements LightSource {
      */
     public PointLight(Color color, Point3D position, double kC, double kL, double kQ) {
         super(color);
-        this._position = new Point3D(position);
+        this._position = position;
         this._kC = kC;
         this._kL = kL;
         this._kQ = kQ;
@@ -57,6 +56,6 @@ public class PointLight extends Light implements LightSource {
      */
     @Override
     public double getDistance(Point3D p) {
-        return this.getL(p).getPoint().distance(p);
+        return this._position.distance(p);
     }
 }

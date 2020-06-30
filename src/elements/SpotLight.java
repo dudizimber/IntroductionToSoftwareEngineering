@@ -7,8 +7,7 @@ import primitives.Vector;
 import static primitives.Util.alignZero;
 
 /**
- *Models point light source with direction
- *
+ * Models point light source with direction
  */
 public class SpotLight extends PointLight {
     private Vector _direction;
@@ -21,7 +20,7 @@ public class SpotLight extends PointLight {
      */
     public SpotLight(Color color, Vector direction, Point3D position, double kC, double kL, double kQ) {
         super(color, position, kC, kL, kQ);
-        this._direction = new Vector(direction).normalized();
+        this._direction = direction.normalized();
     }
 
     /**
@@ -33,13 +32,11 @@ public class SpotLight extends PointLight {
     @Override
     public Color getIntensity(Point3D p) {
         double projection = _direction.dotProduct(getL(p));
-        if (alignZero(projection)<= 0) {
+        if (alignZero(projection) <= 0)
             return Color.BLACK;
-        }
         Color pointLightIntensity = super.getIntensity(p);
         return pointLightIntensity.scale(projection);
     }
-
 
 
 }

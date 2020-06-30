@@ -113,7 +113,7 @@ public class VectorTest {
      */
     @Test
     public void testNormalize() {
-        Vector vCopy = new Vector(v1);
+        Vector vCopy = new Vector(v1.getPoint());
         Vector vCopyNormalize = vCopy.normalize();
         assertFalse("ERROR: normalize() function creates a new vector", vCopy != vCopyNormalize);
         assertTrue("ERROR: normalize() result is not a unit vector", isZero(vCopyNormalize.length() - 1));
