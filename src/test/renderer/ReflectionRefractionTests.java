@@ -8,6 +8,7 @@ import elements.Camera;
 import elements.PointLight;
 import elements.SpotLight;
 import geometries.Plane;
+import geometries.Polygon;
 import geometries.Sphere;
 import geometries.Triangle;
 import org.junit.Test;
@@ -190,4 +191,56 @@ public class ReflectionRefractionTests {
         render.renderImage();
         imageWriter.writeToImage();
     }
+
+    @Test
+    public void spherePicture() {
+        Scene scene = new Scene("Test scene");
+        scene.setCamera(new Camera(new Point3D(0, 0, -1000), new Vector(0, 0, 1), new Vector(0, -1, 0)));
+        scene.setDistance(1000);
+        scene.setBackground(Color.BLACK);
+        scene.setAmbientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.15));
+
+        scene.addGeometries(
+
+                new Sphere(new Color(java.awt.Color.BLACK), new Material(0.3, 0.2, 50, .5, 0),
+                        new Point3D(0, 0, 150), 200),
+
+                new Polygon(Color.BLACK,
+                        new Material(.1, .1, 0, .8, 0).setGlossBlur(0),
+                        new Point3D(0, 0, 0),
+                        new Point3D(300, 300, 0),
+                        new Point3D(300, -300, 0)
+                ),
+                new Polygon(Color.BLACK,
+                        new Material(.1, .1, 0, .8, 0).setGlossBlur(10),
+                        new Point3D(0, 0, 0),
+                        new Point3D(300, 300, 0),
+                        new Point3D(-300, 300, 0)
+                ),
+                new Polygon(Color.BLACK,
+                        new Material(.1, .1, 0, .8, 0).setGlossBlur(25),
+                        new Point3D(0, 0, 0),
+                        new Point3D(-300, -300, 0),
+                        new Point3D(-300, 300, 0)
+                ),
+                new Polygon(Color.BLACK,
+                        new Material(.1, .1, 0, .8, 0).setGlossBlur(50),
+                        new Point3D(0, 0, 0),
+                        new Point3D(300, -300, 0),
+                        new Point3D(-300, -300, 0)
+                )
+        );
+
+        scene.addLights(
+                new PointLight(new Color(java.awt.Color.WHITE), new Point3D(0, 0, 150), 1.0, 10E-14, 10E-14)
+                //new SpotLight(new Color(255, 120, 0), new Vector(2, 2, -3), new Point3D(-300, 0, -50), 1, 10E-14, 10E-10)
+        );
+
+        ImageWriter imageWriter = new ImageWriter("spherePicture", 1000, 1000, 1000, 1000);
+        Render render = new Render(scene, imageWriter).setNumOfGlossBlurRays(80).setNumOfSampleRays(0) //
+                .setMultithreading(3).setDebugPrint();
+        render.renderImage();
+        imageWriter.writeToImage();
+    }
+
 }
