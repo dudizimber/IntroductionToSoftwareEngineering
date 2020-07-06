@@ -3,10 +3,7 @@
  */
 package test.renderer;
 
-import elements.AmbientLight;
-import elements.Camera;
-import elements.PointLight;
-import elements.SpotLight;
+import elements.*;
 import geometries.Plane;
 import geometries.Polygon;
 import geometries.Sphere;
@@ -243,4 +240,41 @@ public class ReflectionRefractionTests {
         imageWriter.writeToImage();
     }
 
+    @Test
+    public void spheresPicture() {
+        Scene scene = new Scene("Test scene");
+        scene.setCamera(new Camera(new Point3D(0, 80, -650), new Vector(0, 0, 1), new Vector(0, -1, 0)));
+        scene.setDistance(1000);
+        scene.setBackground(Color.BLACK);
+        scene.setAmbientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.15));
+
+        scene.addGeometries(
+                new Sphere(new Color(java.awt.Color.BLACK), new Material(0.8, 0.8, 30, 0.8, 0), new Point3D(0, 120, -200), 55),
+                new Sphere(new Color(java.awt.Color.black), new Material(0.8, 0.8, 30, 0.8, 0), new Point3D(170, 80, -100), 45),
+                new Sphere(new Color(java.awt.Color.BLACK), new Material(0.8, 0.8, 30, 0.8, 0), new Point3D(-120, 140, -200), 35),
+                new Sphere(new Color(java.awt.Color.BLACK), new Material(0.8, 0.8, 30, 0.8, 0), new Point3D(-70, 210, -50), 25),
+                new Sphere(new Color(java.awt.Color.BLACK), new Material(0.8, 0.8, 30, 0.8, 0), new Point3D(110, 180, -100), 35),
+              new Triangle(Color.BLACK, new Material(0.8, 1, 10000, 0, 1), //
+                      new Point3D(-1000, -200, 250), new Point3D(2500, -600, -700), new Point3D(2500, -150, 700)),
+                new Triangle(Color.BLACK, new Material(0.8, 1, 10000, 0, 1), //
+                        new Point3D(-500, 200, -100), new Point3D(1800, 200, -700), new Point3D(-1800, 200, -700)));
+
+        scene.addLights(
+        new SpotLight(new Color(400, 400, 1020), new Vector(2, 2, 3), new Point3D(-100, -300, -100), 1.0, 0.00001, 0.000005),
+            new SpotLight(new Color(450, 500, 300), new Vector(2, 2, -3), new Point3D(-900, -300, 100), 1.0, 0.00001, 0.000005),
+               new SpotLight(new Color(450, 500, 300), new Vector(5, 5, -3), new Point3D(-900, -600, 300), 1.0, 0.00001, 0.000005),
+               new SpotLight(new Color(450, 500, 300), new Vector(5, 5, -3), new Point3D(-1600, -400, 700), 1.0, 0.00001, 0.000005),
+              // new SpotLight(new Color(200, 300, 300), new Vector(2, 2, -3), new Point3D(-500, -100, -100), 1.0, 0.00001, 0.000005),
+               new DirectionalLight(new Color(400,400,400
+                ),new Vector(0,0,-200)),
+              // new SpotLight(new Color(400, 700, 400), new Vector(2, 2, -3), new Point3D(50, -300, 150), 1.0, 0.00001, 0.000005),
+               // new PointLight(new Color(650, 400, 400), new Point3D(-1500, -2000, -200), 0.5, 0.5, 0.5),
+        new PointLight(new Color(1150, 700, 400), new Point3D(0, 0, -200), 0.5, 0.5, 0.5));
+        ImageWriter imageWriter = new ImageWriter("spheresMirroredPicture", 1000, 1000, 1000, 1000);
+
+        Render render = new Render(scene, imageWriter).setNumOfGlossBlurRays(0).setNumOfSampleRays(80) //
+                .setMultithreading(3).setDebugPrint();
+        render.renderImage();
+        imageWriter.writeToImage();
+    }
 }
